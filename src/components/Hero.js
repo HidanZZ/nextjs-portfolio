@@ -16,22 +16,14 @@ import {
   Alignment,
   useStateMachineInput,
 } from "@rive-app/react-canvas";
-import { motion } from "framer-motion";
+import { motion, isValidMotionProp, useAnimation } from "framer-motion";
 import AnimatedCharacters from "./AnimatedText";
 import Lottie from "lottie-react";
 import scrolldown from "../animations/scroll-down.json";
-export default function Hero() {
-  const { rive, RiveComponent } = useRive({
-    src: "hero-animation.riv",
-    autoplay: true,
-    stateMachines: "scene",
-    layout: new Layout({
-      fit: Fit.Cover,
-      alignment: Alignment.Center,
-    }),
-  });
-  const placeholderText = [
-    { type: "heading1", text: "Hey There" },
+import { useEffect } from "react";
+export default function Hero({ children, handleTextAnimation }) {
+  var placeholderText = [
+    { type: "heading1", text: "Hello World" },
     {
       type: "heading1",
       text: "My name is Hidanz",
@@ -45,14 +37,25 @@ export default function Hero() {
       },
     },
   };
+
+  const ChakraBox = chakra(motion.div, {
+    /**
+     * Allow motion props and the children prop to be forwarded.
+     * All other chakra props not matching the motion props will still be forwarded.
+     */
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === "children",
+  });
+
   return (
-    <Box
-      // pos="absolute"
-      minH="100vh"
-      w="full"
-    >
-      <Box position={"relative"} minW="full" minH="100vh">
-        <RiveComponent style={{ minHeight: "100vh" }} />
+    <Box onWheel={null} minH="100vh" w="full">
+      <Box
+        // opacity={loaded ? 1 : 0}
+        position={"relative"}
+        minW="full"
+        minH="100vh"
+      >
+        {/* <riveComponent style={{ minHeight: "100vh" }} /> */}
+        {children}
         <motion.div
           style={{
             position: "absolute",
@@ -72,23 +75,25 @@ export default function Hero() {
             })}
           </div>
         </motion.div>
-        <motion.div
+        <ChakraBox
           style={{
             position: "absolute",
             top: "70%",
             left: "50%",
+
             //
           }}
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 2 }}
-          transition={{ duration: 0.5 }}
+          display={{ base: "none", md: "block" }}
+          initial={{ opacity: 0, scale: 0.5, y: "100%", x: "-25%" }}
+          animate={{ opacity: 1, scale: 2, y: "0%", x: "-25%" }}
+          transition={{ duration: 1.725 }}
         >
           <Lottie
-            style={{ transform: "translate(-25%,0%)" }}
+            // style={{ transform: "translate(-25%,0%)" }}
             animationData={scrolldown}
             loop={true}
           />
-        </motion.div>
+        </ChakraBox>
       </Box>
     </Box>
   );

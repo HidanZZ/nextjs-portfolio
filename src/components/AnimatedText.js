@@ -28,7 +28,7 @@ const AnimatedCharacters = (props) => {
     visible: {
       y: 0,
       //   color: "#FF0088",
-      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.75 },
+      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 1.725 },
     },
   };
 
@@ -72,6 +72,8 @@ const AnimatedCharacters = (props) => {
                       fontFamily: "var(--chakra-fonts-heading)",
                       fontWeight: "bold",
                       fontSize: "var(--chakra-fontSizes-6xl)",
+                      //text shadow
+                      textShadow: "0px 0px 3px #000",
                     }}
                     variants={item}
                   >
