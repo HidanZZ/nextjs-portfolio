@@ -30,7 +30,7 @@ export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box position="absolute" left="0" top="0" w="full">
+    <Box position="absolute" left="0" top="0" w="full" zIndex={9999}>
       <Flex
         bg="transparent"
         color={useColorModeValue("gray.600", "white")}
@@ -105,7 +105,7 @@ const DesktopNav = () => {
   };
 
   return (
-    <Stack direction={"row"} spacing={10}>
+    <Stack zIndex={999} direction={"row"} spacing={10}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover w="20px" trigger={"hover"} placement={"bottom-start"}>

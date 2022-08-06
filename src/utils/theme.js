@@ -4,6 +4,13 @@ import { extendTheme } from "@chakra-ui/react";
 const config = {
   initialColorMode: "light",
   useSystemColorMode: false,
+  styles: {
+    global: (props) => ({
+      body: {
+        overflow: "hidden",
+      },
+    }),
+  },
 };
 
 // 3. extend the theme
