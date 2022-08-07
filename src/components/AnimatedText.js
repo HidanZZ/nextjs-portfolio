@@ -1,10 +1,15 @@
 import React from "react";
-import { motion } from "framer-motion";
+
+import { AnimatePresence, motion } from "framer-motion";
 
 // Word wrapper
 const Wrapper = (props) => {
   // We'll do this to prevent wrapping of words using CSS
-  return <span className="word-wrapper">{props.children}</span>;
+  return (
+    <span style={{ whiteSpace: "nowrap" }} className="word-wrapper">
+      {props.children}
+    </span>
+  );
 };
 
 // Map API "type" vaules to JSX tag names
@@ -22,13 +27,18 @@ const AnimatedCharacters = (props) => {
   const item = {
     hidden: {
       y: "200%",
-      //   color: "#0055FF",
+      color: "#0055FF",
       transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.85 },
     },
     visible: {
       y: 0,
-      //   color: "#FF0088",
-      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 1.725 },
+      color: "#FF0088",
+      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 2 },
+    },
+    exit: {
+      y: "-200%",
+      color: "#0055FF",
+      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 1.5 },
     },
   };
 
