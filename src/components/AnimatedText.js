@@ -1,7 +1,7 @@
 import React from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
-
+import { Box } from "@chakra-ui/react";
 // Word wrapper
 const Wrapper = (props) => {
   // We'll do this to prevent wrapping of words using CSS
@@ -24,23 +24,6 @@ const tagMap = {
 // individual character animations
 const AnimatedCharacters = (props) => {
   // Framer Motion variant object, for controlling animation
-  const item = {
-    hidden: {
-      y: "200%",
-      color: "#0055FF",
-      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.85 },
-    },
-    visible: {
-      y: 0,
-      color: "#FF0088",
-      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 2 },
-    },
-    exit: {
-      y: "-200%",
-      color: "#0055FF",
-      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 1.5 },
-    },
-  };
 
   //  Split each word of props.text into an array
   const splitWords = props.text.split(" ");
@@ -76,26 +59,27 @@ const AnimatedCharacters = (props) => {
                   }}
                   key={index}
                 >
-                  <motion.span
+                  <Box
+                    as={motion.span}
+                    className="noselect"
                     style={{
                       display: "inline-block",
                       fontFamily: "var(--chakra-fonts-heading)",
                       fontWeight: "bold",
-                      fontSize: "var(--chakra-fontSizes-6xl)",
-                      //text shadow
                       textShadow: "0px 0px 3px #000",
                     }}
-                    variants={item}
+                    fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+                    variants={props.item}
+                    custom={props.custom}
                   >
                     {element}
-                  </motion.span>
+                  </Box>
                 </span>
               );
             })}
           </Wrapper>
         );
       })}
-      {/* {} */}
     </Tag>
   );
 };

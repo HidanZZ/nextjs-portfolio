@@ -35,6 +35,7 @@ export default function WithSubnavigation() {
         bg="transparent"
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
+        position={{ base: "relative", md: "auto" }}
         py={{ base: 4 }}
         px={{ base: 4 }}
         align={"center"}
@@ -54,7 +55,8 @@ export default function WithSubnavigation() {
           />
         </Flex>
         <Flex
-          position="relative"
+          position={{ base: "absolute", md: "relative" }}
+          left={{ base: "50%", md: "auto" }}
           flex={{ base: 1 }}
           justify={{ base: "center", md: "space-between" }}
         >
@@ -62,8 +64,8 @@ export default function WithSubnavigation() {
             <DesktopNav />
           </Flex>
           <Heading
-            position="absolute"
-            left="50%"
+            position={{ base: "relative", md: "absolute" }}
+            left={{ base: "auto", md: "50%" }}
             transform="translateX(-50%)"
             as="h1"
             size="lg"

@@ -7,7 +7,7 @@ export default class Document extends NextDocument {
     return (
       <Html>
         <Head />
-        <body style={{ overflow: "hidden" }}>
+        <body>
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Main />
           <NextScript />

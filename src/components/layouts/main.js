@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { Box, Container } from "@chakra-ui/react";
-import Navbar from "../Navbar";
 import { motion } from "framer-motion";
 import WithSubnavigation from "../nav";
 import Footer from "../Footer";
@@ -20,11 +19,6 @@ const Main = (props) => {
         variants={variants}
         initial="invisible"
         animate={props.loaded ? "visible" : "invisible"}
-        style={{
-          overflow: "hidden",
-          position: "relative",
-          // opacity: props.loaded ? "1" : "0",
-        }}
       >
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -34,7 +28,7 @@ const Main = (props) => {
         <Box w="full" maxW="100vw">
           {props.children}
         </Box>
-        {/* <Footer></Footer> */}
+        <Footer></Footer>
       </motion.div>
     </Box>
   );
