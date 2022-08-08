@@ -1,4 +1,5 @@
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import AnimatedCharacters from "./AnimatedText";
 import React, {
   forwardRef,
@@ -6,10 +7,50 @@ import React, {
   useImperativeHandle,
   useState,
 } from "react";
+import { Box } from "@chakra-ui/react";
+import Emitter from "../services/emitter";
 const HeroText = forwardRef((_, ref) => {
-  const [placeholderTextIndex, setPlaceHolderTextIndex] = useState(0);
+  const [[placeholderTextIndex, direction], setPlaceHolderTextIndex] = useState(
+    [0, 1]
+  );
   const [isAnimationPlaying, setIsAnimationPlaying] = useState(true);
-  const [next, setNext] = useState(true);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const paginate = (newDirection) => {
+    setPlaceHolderTextIndex((prev) => [prev[0] + 1, newDirection]);
+  };
+  // the required distance between touchStart and touchEnd to be detected as a swipe
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null); // otherwise the swipe is fired even with usual touch events
+    setTouchStart(e.targetTouches[0].clientY);
+  };
+
+  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientY);
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isUpSwipe = distance > minSwipeDistance;
+    const isDownSwipe = distance < -minSwipeDistance;
+    if (isUpSwipe || isDownSwipe)
+      if (!isAnimationPlaying) {
+        if (isUpSwipe) {
+          if (placeholderTextIndex < placeholderText.length - 1) {
+            paginate(1);
+          } else {
+            Emitter.emit("textAnimationFinished", true);
+          }
+        } else {
+          if (placeholderTextIndex > 0) {
+            paginate(-1);
+          }
+        }
+        setIsAnimationPlaying(true);
+      }
+  };
+
   const placeholderText = [
     [
       { type: "heading1", text: "Hello World" },
@@ -38,7 +79,26 @@ const HeroText = forwardRef((_, ref) => {
       },
     ],
   ];
+  const item = {
+    hidden: (direction) => {
+      return {
+        y: direction > 0 ? "200%" : "-200%",
+        transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.85 },
+      };
+    },
+    visible: {
+      y: 0,
+      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 2 },
+    },
+    exit: (direction) => {
+      return {
+        y: direction > 0 ? "-200%" : "200%",
+        transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 1.5 },
+      };
+    },
+  };
   useEffect(() => {
+    // console.log(direction);
     setTimeout(() => {
       setIsAnimationPlaying(false);
     }, 1.8 * 1000);
@@ -56,22 +116,30 @@ const HeroText = forwardRef((_, ref) => {
     if (!isAnimationPlaying) {
       if (e.deltaY > 0) {
         if (placeholderTextIndex < placeholderText.length - 1) {
-          setNext(true);
-          setPlaceHolderTextIndex(placeholderTextIndex + 1);
+          paginate(1);
+        } else {
+          Emitter.emit("textAnimationFinished", true);
         }
       } else {
         if (placeholderTextIndex > 0) {
-          setNext(false);
-          setPlaceHolderTextIndex(placeholderTextIndex - 1);
+          paginate(-1);
         }
       }
+
       setIsAnimationPlaying(true);
     }
   };
 
-  useImperativeHandle(ref, (e) => ({
+  useImperativeHandle(ref, (e, handleTextAnimation) => ({
     handleScroll: handleScroll,
+    onTouchStart: onTouchStart,
+    onTouchMove: onTouchMove,
+    onTouchEnd: onTouchEnd,
   }));
+  const [refOne, inViewOne] = useInView({
+    threshold: 0.7,
+    rootMargin: `-200px`,
+  });
   const container = {
     visible: {
       transition: {
@@ -84,7 +152,9 @@ const HeroText = forwardRef((_, ref) => {
       {placeholderText.map((list, index) => {
         return (
           placeholderTextIndex === index && (
-            <motion.div
+            <Box
+              ref={refOne}
+              as={motion.div}
               key={index}
               style={{
                 position: "absolute",
@@ -92,18 +162,26 @@ const HeroText = forwardRef((_, ref) => {
                 left: "50%",
                 transform: "translate(-50%,-50%)",
               }}
-              initial={next ? "hidden" : "exit"}
+              minW={{ base: "90%", md: "50%" }}
+              initial={"hidden"}
               //   animate="visible"
-              exit={next ? "exit" : "hidden"}
-              animate={"visible"}
+              exit={"exit"}
+              animate={inViewOne ? "visible" : "hidden"}
               variants={container}
             >
               <div>
-                {list.map((item, index) => {
-                  return <AnimatedCharacters {...item} key={index} />;
+                {list.map((element, index) => {
+                  return (
+                    <AnimatedCharacters
+                      custom={direction}
+                      {...element}
+                      item={item}
+                      key={index}
+                    />
+                  );
                 })}
               </div>
-            </motion.div>
+            </Box>
           )
         );
       })}

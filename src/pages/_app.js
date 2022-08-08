@@ -3,6 +3,7 @@ import Main from "../components/layouts/main";
 import theme from "../utils/theme";
 import { useRive, Layout, Fit, Alignment } from "@rive-app/react-canvas";
 import { useState } from "react";
+import "../css/global.css";
 const App = ({ Component, pageProps, router }) => {
   const [loaded, setLoaded] = useState(false);
   const { rive, RiveComponent } = useRive({
@@ -16,12 +17,10 @@ const App = ({ Component, pageProps, router }) => {
     onLoad: () => {
       console.log("loaded");
       setTimeout(() => setLoaded(true), 1000);
-      // setLoaded(true);
     },
   });
   return (
     <ChakraProvider theme={theme}>
-      {/* <RemoveScrollBar /> */}
       <Main
         //pass the loaded state to the main component
         loaded={loaded}
