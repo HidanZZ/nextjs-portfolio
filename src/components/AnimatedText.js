@@ -45,7 +45,7 @@ const AnimatedCharacters = (props) => {
   const Tag = tagMap[props.type];
 
   return (
-    <Tag style={{ textAlign: "center" }}>
+    <Box as={Tag} textAlign="center">
       {words.map((word, index) => {
         return (
           // Wrap each word in the Wrapper component
@@ -66,8 +66,9 @@ const AnimatedCharacters = (props) => {
                       display: "inline-block",
                       fontFamily: "var(--chakra-fonts-heading)",
                       fontWeight: "bold",
-                      textShadow: "0px 0px 3px #000",
+                      // textShadow: "0px 0px 1px black",
                     }}
+                    color="white"
                     fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
                     variants={props.item}
                     custom={props.custom}
@@ -80,7 +81,7 @@ const AnimatedCharacters = (props) => {
           </Wrapper>
         );
       })}
-    </Tag>
+    </Box>
   );
 };
 
