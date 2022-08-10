@@ -59,4 +59,26 @@ html {
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
     transition: all 1.5s;
+    overflow-x: hidden;
 }
+/* .typewriter-wrapper{
+    margin-bottom: 5rem;
+    font-weight: bold;
+    font-size: 2rem;
+
+}
+.typewriter-cursor{
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+    .typewriter-wrapper {
+            margin-bottom: 5rem;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+                .typewriter-cursor {
+                    font-size: 1rem;
+                }
+        
+} */
