@@ -63,16 +63,19 @@ export default function WithSubnavigation() {
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
           </Flex>
-          <Heading
-            position={{ base: "relative", md: "absolute" }}
-            left={{ base: "auto", md: "50%" }}
-            transform="translateX(-50%)"
-            as="h1"
-            size="lg"
-            letterSpacing={"tight"}
-          >
-            HIDANZ
-          </Heading>
+          <a href="/">
+            <Heading
+              position={{ base: "relative", md: "absolute" }}
+              left={{ base: "auto", md: "50%" }}
+              transform="translateX(-50%)"
+              as="h1"
+              size="lg"
+              letterSpacing={"tight"}
+              cursor="pointer"
+            >
+              HIDANZ
+            </Heading>
+          </a>
         </Flex>
       </Flex>
 
