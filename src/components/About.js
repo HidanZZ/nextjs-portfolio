@@ -10,20 +10,9 @@ const About = (props) => {
   const [ref, inView] = useInView({
     threshold: 0,
   });
-  const [next, setNext] = useState(false);
-  const [src, setSrc] = useState("https://source.unsplash.com/random");
-
-  useEffect(() => {
-    //fetch every 5 seconds a random image
-    //loop 5 times and fetch a random image
-    // const interval = setInterval(() => {
-    //   console.log("fetching");
-    //   paginate(1);
-    // }, 5000);
-    // return () => {
-    //   clearInterval(interval);
-    // };
-  }, []);
+  const [refText, inViewText] = useInView({
+    threshold: 0.1,
+  });
 
   const srcs = [
     "https://source.unsplash.com/random/?Programming&1",
@@ -66,15 +55,7 @@ const About = (props) => {
   const swipePower = (offset, velocity) => {
     return Math.abs(offset) * velocity;
   };
-  // useEffect(() => {
-  //   // paginate every 5 seconds
-  //   const interval = setInterval(() => {
-  //     paginate(1);
-  //   }, 5000);
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // }, []);
+
   return (
     <Stack
       {...props}
@@ -84,7 +65,6 @@ const About = (props) => {
     >
       <Flex
         justify={"center"}
-        // alignItems={"center"}
         flex={1}
         flexDirection="column"
         minWidth="50%"
@@ -142,6 +122,11 @@ const About = (props) => {
           />
         </chakra.div>
         <chakra.p
+          ref={refText}
+          as={motion.p}
+          initial={{ opacity: 0, x: -50 }}
+          animate={inViewText ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+          transition={{ delay: 1, type: "spring", stiffness: 100 }}
           mb={{
             base: 10,
             md: 4,
@@ -153,9 +138,17 @@ const About = (props) => {
           fontWeight="thin"
           letterSpacing="wider"
         >
-          Low-latency voice and video feels like you’re in the same room. Wave
-          hello over video, watch friends stream their games, or gather up and
-          have a drawing session with screen share.
+          I’m Ait daoud El Houssein, a professional and talented Software
+          Developer with design skills. I am passionate about leveraging my
+          diverse backgrounds to decipher challenging problems and create
+          delightful experiences. I honed my skills at Web, Mobile and Game
+          development.
+          <br />
+          <br />I develop websites using MERN stack. I have skills in using
+          design softwares like Figma; with prototype tools like Framer and
+          Protopie. Being a diligent, hardworking and result oriented lady, I
+          always work towards achieving best result on each project I lay my
+          hands on.
         </chakra.p>
       </Flex>
       <Flex

@@ -2,7 +2,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Main from "../components/layouts/main";
 import theme from "../utils/theme";
 import { useRive, Layout, Fit, Alignment } from "@rive-app/react-canvas";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../css/global.css";
 const App = ({ Component, pageProps, router }) => {
   const [loaded, setLoaded] = useState(false);
@@ -19,6 +19,12 @@ const App = ({ Component, pageProps, router }) => {
       setTimeout(() => setLoaded(true), 1000);
     },
   });
+  useEffect(() => {
+    if (router.pathname != "/") {
+      setTimeout(() => setLoaded(true), 1000);
+    }
+  }, []);
+
   return (
     <ChakraProvider theme={theme}>
       <Main
