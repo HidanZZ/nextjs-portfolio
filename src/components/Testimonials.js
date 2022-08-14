@@ -29,30 +29,10 @@ const pages = [
   {
     quote:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
-    name: "Hidanz",
+    name: "lol",
     country: "nor",
     stars: 5,
-  },
-  {
-    quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
-    name: "Hidanz",
-    country: "nor",
-    stars: 5,
-  },
-  {
-    quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
-    name: "Hidanz",
-    country: "nor",
-    stars: 5,
-  },
-  {
-    quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
-    name: "Hidanz",
-    country: "nor",
-    stars: 4,
+    url: "https://www.google.com",
   },
   {
     quote:
@@ -60,6 +40,39 @@ const pages = [
     name: "lol",
     country: "nor",
     stars: 5,
+    url: "https://www.google.com",
+  },
+  {
+    quote:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
+    name: "lol",
+    country: "nor",
+    stars: 5,
+    url: "https://www.google.com",
+  },
+  {
+    quote:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
+    name: "lol",
+    country: "nor",
+    stars: 5,
+    url: "https://www.google.com",
+  },
+  {
+    quote:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
+    name: "lol",
+    country: "nor",
+    stars: 5,
+    url: "https://www.google.com",
+  },
+  {
+    quote:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
+    name: "lol",
+    country: "nor",
+    stars: 5,
+    url: "https://www.google.com",
   },
 ];
 
@@ -77,7 +90,26 @@ export default function Testimonials(props) {
     if (!newDirection) newDirection = newPage - currentPage;
     setCurrentPage([newPage, newDirection]);
   }
-
+  const [titleRef, inViewTitle] = useInView({
+    threshold: 0,
+  });
+  const [controlsRef, inViewControls] = useInView({
+    threshold: 0,
+  });
+  const titleVariants = {
+    initial: {
+      opacity: 0,
+      y: "-100%",
+    },
+    animate: {
+      opacity: 1,
+      y: "0%",
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut",
+      },
+    },
+  };
   return (
     <Flex
       flexDirection={"column"}
@@ -87,14 +119,24 @@ export default function Testimonials(props) {
       minH="100vh"
       w="full"
     >
-      <Stack spacing={2} align={"center"}>
+      <Box
+        as={motion.div}
+        justifyContent={"center"}
+        alignItems={"center"}
+        ref={titleRef}
+        animate={inViewTitle ? "animate" : "initial"}
+        initial="initial"
+        variants={titleVariants}
+        spacing={2}
+        align={"center"}
+      >
         <Heading color="white" fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}>
           Our Clients Speak
         </Heading>
         <Text color="white" textAlign={"center"} fontSize={{ md: "2xl" }}>
           We have been working with clients around the world
         </Text>
-      </Stack>
+      </Box>
 
       <Container align="center" maxW={"100vw"} py={16} as={Stack} spacing={12}>
         <Slides
@@ -103,37 +145,50 @@ export default function Testimonials(props) {
           setPage={setPage}
           hasPaginated={hasPaginated}
         />
-        <Pagination currentPage={currentPage} setPage={setPage} />
-        <Stack direction={"row"}>
-          <IconButton
-            borderRadius={"50%"}
-            _hover={{ bg: "green" }}
-            icon={<ChevronLeftIcon />}
-            onClick={() => {
-              var newPage = currentPage - 1;
-              if (newPage !== currentPage) {
-                hasPaginated.current = true;
-                // Wrap the page index to within the permitted page range
-                newPage = wrap(0, pages.length, newPage);
-                setPage(newPage, -1);
-              }
-            }}
-          />
-          <IconButton
-            borderRadius={"50%"}
-            icon={<ChevronRightIcon />}
-            _hover={{ bg: "green" }}
-            onClick={() => {
-              var newPage = currentPage + 1;
-              if (newPage !== currentPage) {
-                hasPaginated.current = true;
-                // Wrap the page index to within the permitted page range
-                newPage = wrap(0, pages.length, newPage);
-                setPage(newPage, 1);
-              }
-            }}
-          />
-        </Stack>
+        <Box
+          width={"100%"}
+          ref={controlsRef}
+          as={motion.div}
+          justifyContent={"center"}
+          alignItems={"center"}
+          animate={
+            inViewControls ? { opacity: 1, y: 0 } : { opacity: 0, y: "100%" }
+          }
+          initial={{ opacity: 0, y: "100%" }}
+          transition={{ duration: 0.5, type: "spring", stiffness: 300 }}
+        >
+          <Pagination currentPage={currentPage} setPage={setPage} />
+          <Stack mt={4} direction={"row"} align="center" justify={"center"}>
+            <IconButton
+              borderRadius={"50%"}
+              _hover={{ bg: "green" }}
+              icon={<ChevronLeftIcon />}
+              onClick={() => {
+                var newPage = currentPage - 1;
+                if (newPage !== currentPage) {
+                  hasPaginated.current = true;
+                  // Wrap the page index to within the permitted page range
+                  newPage = wrap(0, pages.length, newPage);
+                  setPage(newPage, -1);
+                }
+              }}
+            />
+            <IconButton
+              borderRadius={"50%"}
+              icon={<ChevronRightIcon />}
+              _hover={{ bg: "green" }}
+              onClick={() => {
+                var newPage = currentPage + 1;
+                if (newPage !== currentPage) {
+                  hasPaginated.current = true;
+                  // Wrap the page index to within the permitted page range
+                  newPage = wrap(0, pages.length, newPage);
+                  setPage(newPage, 1);
+                }
+              }}
+            />
+          </Stack>
+        </Box>
       </Container>
     </Flex>
   );
@@ -255,14 +310,19 @@ function Slides({ currentPage, setPage, direction, hasPaginated }) {
           custom={direction}
           color={"black"}
         >
-          <VStack p={10} width="100%">
-            <Flex w={"100%"} direction={"row"} justifyContent={"space-between"}>
+          <VStack p={{ base: 3, sm: 4, md: 5, lg: 7, xl: 10 }} width="100%">
+            <Flex
+              w={"100%"}
+              direction={"row"}
+              mt={2}
+              justifyContent={"space-between"}
+            >
               <Quote reversed={true} />
               <Quote />
             </Flex>
 
             <Text
-              p={6}
+              p={{ base: 2, sm: 4, md: 6 }}
               fontSize="md"
               textAlign="center"
               color="gray.600"
@@ -292,7 +352,9 @@ function Slides({ currentPage, setPage, direction, hasPaginated }) {
                 width="18px"
               />
               <Text cursor={"pointer"} mx={2} fontWeight={500}>
-                <a>{pages[currentPage].name} (Fiverr)</a>
+                <a href={pages[currentPage].url}>
+                  {pages[currentPage].name} (Fiverr)
+                </a>
               </Text>
             </Flex>
           </VStack>
