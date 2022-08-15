@@ -30,7 +30,7 @@ export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box position="absolute" left="0" top="0" w="full" zIndex={9999}>
+    <Box position={"fixed"} className="nav" w="full" zIndex={9999}>
       <Flex
         bg="transparent"
         color={useColorModeValue("gray.600", "white")}

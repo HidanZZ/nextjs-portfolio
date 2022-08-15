@@ -110,6 +110,7 @@ export default function Testimonials(props) {
       },
     },
   };
+
   return (
     <Flex
       flexDirection={"column"}
