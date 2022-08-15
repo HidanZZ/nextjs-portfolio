@@ -125,6 +125,7 @@ export default function Testimonials(props) {
         justifyContent={"center"}
         alignItems={"center"}
         ref={titleRef}
+        mt={8}
         animate={inViewTitle ? "animate" : "initial"}
         initial="initial"
         variants={titleVariants}
