@@ -28,7 +28,7 @@ const Home = ({ children }) => {
       </Hero>
       <About mt={{ base: 3, md: 0 }} scrollSnapAlign="start" />
 
-      {/* <Work scrollSnapAlign="start"> </Work> */}
+      <Work scrollSnapAlign="start" />
       <Testimonials mt={{ base: 3, md: 0 }} scrollSnapAlign="start" />
       <ContactFormWithSocialButtons mt={4} scrollSnapAlign="center" />
     </VStack>
