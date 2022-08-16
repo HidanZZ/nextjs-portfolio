@@ -10,9 +10,16 @@ const config = {
 const theme = extendTheme({
   config,
   colors: {
-    white: "#D6E9E7",
+    white: "#fff",
     black: "#1A202C",
+    lightGreen: "#00AAA0",
     green: "#318680",
+    beige: "#F3EADA",
+    darkGreen: "#0C1713",
+    darkPink: "#AB4967",
+    pink: "#A04668",
+    lightPink: "#BC8DA0",
+    lavender: "#D9D0DE",
   },
   styles: {
     body: {
