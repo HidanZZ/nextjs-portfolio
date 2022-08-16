@@ -1,7 +1,7 @@
 import Head from "next/head";
-import { Box, Container } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import WithSubnavigation from "../nav";
+import NavBar from "../NavBar";
 import Footer from "../Footer";
 import ThreeDotsWave from "../ThreeDotsWave";
 const Main = (props) => {
@@ -24,7 +24,7 @@ const Main = (props) => {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <title>Portfilio</title>
         </Head>
-        <WithSubnavigation></WithSubnavigation>
+        <NavBar />
         <Box w="full" maxW="100vw">
           {props.children}
         </Box>

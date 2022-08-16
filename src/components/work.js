@@ -23,23 +23,39 @@ const Work = (props) => {
   const screens = [
     {
       title: "All",
-      color: "#ff0055",
+      color: "#AB4967",
     },
     {
       title: "Games",
-      color: "#0099ff",
+      color: "#A04668",
     },
     {
       title: "Apps",
-      color: "#22cc88",
+      color: "#BC8DA0",
     },
     {
       title: "Web",
-      color: "#ffaa00",
+      color: "#D9D0DE",
     },
   ];
   const data = {
     Games: [
+      {
+        title: "test",
+        category: "game",
+        categoryIndex: 1,
+        image:
+          "https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-social.png",
+        description: "test",
+      },
+      {
+        title: "test",
+        category: "game",
+        categoryIndex: 1,
+        image:
+          "https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-social.png",
+        description: "test",
+      },
       {
         title: "test",
         category: "game",
@@ -60,6 +76,14 @@ const Work = (props) => {
       },
     ],
     Web: [
+      {
+        title: "test",
+        category: "web",
+        categoryIndex: 3,
+        image:
+          "https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-social.png",
+        description: "test",
+      },
       {
         title: "test",
         category: "web",
@@ -116,7 +140,7 @@ const Work = (props) => {
         mb={8}
         textAlign="center"
       >
-        Checkout some of My <chakra.span color={"green"}>Work</chakra.span>
+        Checkout some of My <chakra.span color={"darkPink"}>Work</chakra.span>
       </chakra.h1>
       <chakra.ol
         listStyleType={"none"}
@@ -178,27 +202,17 @@ const Work = (props) => {
           </chakra.li>
         ))}
       </chakra.ol>
-      <Box pos={"relative"} minW="full">
+      <Box pos={"relative"} minW="80%" maxW={"80%"}>
         <AnimatePresence>
           <Flex
             width={"full"}
             flexGrow={1}
             as={motion.div}
             pos="absolute"
-            initial={{
-              opacity: 0,
-              y: "100%",
-              transition: { ease: "easeInOut", duration: 0.5 },
-            }}
             animate={{
-              opacity: 1,
-              y: 0,
-              transition: { ease: "easeInOut", duration: 0.5 },
-            }}
-            exit={{
-              opacity: 0,
-              y: "100%",
-              transition: { ease: "easeInOut", duration: 0.5 },
+              transition: {
+                staggerChildren: 0.25,
+              },
             }}
             mt={4}
             key={selected}
@@ -233,10 +247,24 @@ const Work = (props) => {
 const Card = ({ data, key }) => {
   return (
     <Flex
+      userSelect={"none"}
       w="280px"
       m={4}
+      as={motion.div}
       color={"gray.900"}
       bg={"white"}
+      initial={{
+        opacity: 0,
+        transition: { ease: "easeInOut", duration: 0.5 },
+      }}
+      animate={{
+        opacity: 1,
+        transition: { ease: "easeInOut", duration: 0.5 },
+      }}
+      exit={{
+        opacity: 0,
+        transition: { ease: "easeInOut", duration: 0.5 },
+      }}
       borderRadius={8}
       boxShadow="lg"
       direction="column"

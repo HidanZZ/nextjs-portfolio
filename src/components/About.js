@@ -90,7 +90,7 @@ const About = (props) => {
             base: "normal",
             md: "tight",
           }}
-          color="green"
+          color="darkPink"
         >
           About
         </chakra.h1>
