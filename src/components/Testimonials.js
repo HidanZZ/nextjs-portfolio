@@ -6,6 +6,7 @@ import {
   Flex,
   Heading,
   Stack,
+  chakra,
   Text,
   VStack,
   Container,
@@ -94,7 +95,7 @@ export default function Testimonials(props) {
     threshold: 0,
   });
   const [controlsRef, inViewControls] = useInView({
-    threshold: 0,
+    threshold: 1,
   });
   const titleVariants = {
     initial: {
@@ -116,9 +117,11 @@ export default function Testimonials(props) {
       flexDirection={"column"}
       justifyContent={"center"}
       p={10}
+      ref={props.innerRef}
       {...props}
       minH="100vh"
       w="full"
+      bg="lightbeige"
     >
       <Box
         as={motion.div}
@@ -132,10 +135,10 @@ export default function Testimonials(props) {
         spacing={2}
         align={"center"}
       >
-        <Heading color="white" fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}>
-          Our Clients Speak
+        <Heading color="black" fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}>
+          Our <chakra.span color={"orange"}>Clients</chakra.span> Speak
         </Heading>
-        <Text color="white" textAlign={"center"} fontSize={{ md: "2xl" }}>
+        <Text color="black" textAlign={"center"} fontSize={{ md: "2xl" }}>
           We have been working with clients around the world
         </Text>
       </Box>
@@ -162,8 +165,9 @@ export default function Testimonials(props) {
           <Pagination currentPage={currentPage} setPage={setPage} />
           <Stack mt={4} direction={"row"} align="center" justify={"center"}>
             <IconButton
+              bg={"blue"}
               borderRadius={"50%"}
-              _hover={{ bg: "green" }}
+              _hover={{ bg: "orange" }}
               icon={<ChevronLeftIcon />}
               onClick={() => {
                 var newPage = currentPage - 1;
@@ -177,8 +181,9 @@ export default function Testimonials(props) {
             />
             <IconButton
               borderRadius={"50%"}
+              bg="blue"
               icon={<ChevronRightIcon />}
-              _hover={{ bg: "green" }}
+              _hover={{ bg: "orange" }}
               onClick={() => {
                 var newPage = currentPage + 1;
                 if (newPage !== currentPage) {
@@ -430,7 +435,8 @@ function Dot({ isSelected, onClick }) {
       <Box
         w="5px"
         h="5px"
-        background="rgba(255, 255, 255, 0.5)"
+        bg={"black"}
+        // background="rgba(255, 255, 255, 0.5)"
         borderRadius={"50%"}
         position={"relative"}
       >
@@ -439,7 +445,7 @@ function Dot({ isSelected, onClick }) {
           // is added elsewhere, the new component will animate out from the old one.
           <Box
             as={motion.div}
-            background={"white"}
+            background={"black"}
             borderRadius={"50%"}
             w="9px"
             h="9px"

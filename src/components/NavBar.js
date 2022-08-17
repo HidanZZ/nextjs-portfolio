@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Text } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
-
-export default function NavBar() {
+import Emitter from "../services/emitter";
+export default function NavBar({}) {
   const [navOpen, setNavOpen] = useState(false);
 
   const backdropVarients = {
@@ -70,12 +70,12 @@ export default function NavBar() {
   };
   const hoverVariants = {
     background: [
-      `linear-gradient(to right,#AB4967 0%, white 0%)`,
-      `linear-gradient(to right,#AB4967 20%, white 20%)`,
-      `linear-gradient(to right,#AB4967 40%, white 40%)`,
-      `linear-gradient(to right,#AB4967 60%, white 60%)`,
-      `linear-gradient(to right,#AB4967 80%, white 80%)`,
-      `linear-gradient(to right,#AB4967 100%, white 100%)`,
+      `linear-gradient(to right,#C84B31 0%, white 0%)`,
+      `linear-gradient(to right,#C84B31 20%, white 20%)`,
+      `linear-gradient(to right,#C84B31 40%, white 40%)`,
+      `linear-gradient(to right,#C84B31 60%, white 60%)`,
+      `linear-gradient(to right,#C84B31 80%, white 80%)`,
+      `linear-gradient(to right,#C84B31 100%, white 100%)`,
     ],
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
@@ -112,17 +112,54 @@ export default function NavBar() {
               variants={navContentVarient}
               className="nav-content"
             >
-              <motion.a variants={linkVarientOne} whileHover={hoverVariants}>
+              <motion.a
+                onClick={() => {
+                  setNavOpen(false);
+                }}
+                variants={linkVarientOne}
+                whileHover={hoverVariants}
+              >
                 Home
               </motion.a>
-              <motion.a variants={linkVarientTwo} whileHover={hoverVariants}>
+              <motion.a
+                onClick={() => {
+                  setNavOpen(false);
+                  Emitter.emit("scrollToAbout");
+                }}
+                variants={linkVarientTwo}
+                whileHover={hoverVariants}
+              >
                 About
               </motion.a>
-              <motion.a variants={linkVarientOne} whileHover={hoverVariants}>
-                Contact Us
+              <motion.a
+                onClick={() => {
+                  setNavOpen(false);
+                  Emitter.emit("scrollToWork");
+                }}
+                variants={linkVarientOne}
+                whileHover={hoverVariants}
+              >
+                Works
               </motion.a>
-              <motion.a variants={linkVarientTwo} whileHover={hoverVariants}>
-                Newsletter
+              <motion.a
+                onClick={() => {
+                  setNavOpen(false);
+                  Emitter.emit("scrollToTestimonials");
+                }}
+                variants={linkVarientTwo}
+                whileHover={hoverVariants}
+              >
+                Testimonials
+              </motion.a>
+              <motion.a
+                onClick={() => {
+                  setNavOpen(false);
+                  Emitter.emit("scrollToContact");
+                }}
+                variants={linkVarientOne}
+                whileHover={hoverVariants}
+              >
+                Contact Us
               </motion.a>
             </motion.div>
           </motion.div>

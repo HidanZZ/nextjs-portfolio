@@ -58,9 +58,11 @@ const About = (props) => {
 
   return (
     <Stack
+      ref={props.innerRef}
       {...props}
       minH="100vh"
       w="full"
+      backgroundColor={"lightbeige"}
       direction={{ base: "column", md: "row" }}
     >
       <Flex
@@ -90,7 +92,7 @@ const About = (props) => {
             base: "normal",
             md: "tight",
           }}
-          color="darkPink"
+          color="orange"
         >
           About
         </chakra.h1>
@@ -110,7 +112,7 @@ const About = (props) => {
             base: "normal",
             md: "tight",
           }}
-          color="#D6E9E7"
+          color="black"
         >
           <Typewriter
             options={{
@@ -135,8 +137,10 @@ const About = (props) => {
             base: "lg",
             md: "xl",
           }}
-          fontWeight="thin"
+          fontWeight={300}
+          // fontWeight="thin"
           letterSpacing="wider"
+          color={"black"}
         >
           I’m Ait daoud El Houssein, a professional and talented Software
           Developer with design skills. I am passionate about leveraging my
