@@ -121,7 +121,7 @@ export default function Testimonials(props) {
       {...props}
       minH="100vh"
       w="full"
-      bg="lightbeige"
+      bg="black"
     >
       <Box
         as={motion.div}
@@ -135,10 +135,13 @@ export default function Testimonials(props) {
         spacing={2}
         align={"center"}
       >
-        <Heading color="black" fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}>
+        <Heading
+          color="lightbeige"
+          fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
+        >
           Our <chakra.span color={"orange"}>Clients</chakra.span> Speak
         </Heading>
-        <Text color="black" textAlign={"center"} fontSize={{ md: "2xl" }}>
+        <Text color="lightbeige" textAlign={"center"} fontSize={{ md: "2xl" }}>
           We have been working with clients around the world
         </Text>
       </Box>
@@ -165,9 +168,9 @@ export default function Testimonials(props) {
           <Pagination currentPage={currentPage} setPage={setPage} />
           <Stack mt={4} direction={"row"} align="center" justify={"center"}>
             <IconButton
-              bg={"blue"}
+              bg={"orange"}
               borderRadius={"50%"}
-              _hover={{ bg: "orange" }}
+              _hover={{ bg: "blue" }}
               icon={<ChevronLeftIcon />}
               onClick={() => {
                 var newPage = currentPage - 1;
@@ -181,9 +184,9 @@ export default function Testimonials(props) {
             />
             <IconButton
               borderRadius={"50%"}
-              bg="blue"
+              bg="orange"
               icon={<ChevronRightIcon />}
-              _hover={{ bg: "orange" }}
+              _hover={{ bg: "blue" }}
               onClick={() => {
                 var newPage = currentPage + 1;
                 if (newPage !== currentPage) {
@@ -435,8 +438,8 @@ function Dot({ isSelected, onClick }) {
       <Box
         w="5px"
         h="5px"
-        bg={"black"}
-        // background="rgba(255, 255, 255, 0.5)"
+        // bg={"black"}
+        background="rgba(255, 255, 255, 0.5)"
         borderRadius={"50%"}
         position={"relative"}
       >
@@ -445,7 +448,7 @@ function Dot({ isSelected, onClick }) {
           // is added elsewhere, the new component will animate out from the old one.
           <Box
             as={motion.div}
-            background={"black"}
+            background={"lightbeige"}
             borderRadius={"50%"}
             w="9px"
             h="9px"

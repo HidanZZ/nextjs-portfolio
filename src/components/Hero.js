@@ -12,7 +12,7 @@ export default function Hero(props) {
 
         <HeroText></HeroText>
 
-        <ScrollAnimation />
+        {/* <ScrollAnimation /> */}
       </Box>
     </Box>
   );
