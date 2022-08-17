@@ -9,22 +9,23 @@ const config = {
 // 3. extend the theme
 const theme = extendTheme({
   config,
+  fonts: {
+    body: "Raleway, monospace",
+  },
   colors: {
     white: "#fff",
-    black: "#1A202C",
-    lightGreen: "#00AAA0",
-    green: "#318680",
-    beige: "#F3EADA",
-    darkGreen: "#0C1713",
-    darkPink: "#AB4967",
-    pink: "#A04668",
-    lightPink: "#BC8DA0",
-    lavender: "#D9D0DE",
+    black: "#191919",
+    orange: "#C84B31",
+    blue: "#2D4263",
+    beige: "#ECDBBA",
+    lightbeige: "rgba(214, 233, 231, 1)",
   },
   styles: {
-    body: {
-      color: "white",
-      backgroundColor: "black",
+    global: {
+      body: {
+        color: "white",
+        backgroundColor: "#191919",
+      },
     },
   },
 });

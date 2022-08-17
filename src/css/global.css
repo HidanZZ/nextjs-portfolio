@@ -36,17 +36,17 @@ body {
 ::-webkit-scrollbar {
     height: 5px;
     width: 5px;
+    background: white;
     /* background: var(--background); */
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--accent);
+    
+    background: #1A202C;
     -webkit-border-radius: 1ex;
 }
 
-::-webkit-scrollbar-corner {
-    background: var(--background);
-}
+
 .progress {
     position: fixed;
     left: 0;
@@ -219,7 +219,7 @@ html {
     left: 0;
     height: 100vh;
     width: 100vw;
-    background: #1A202C;
+    background: #191919;
     display: flex;
     justify-content: center;
     align-items: center;
