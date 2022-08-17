@@ -11,7 +11,7 @@ const About = (props) => {
     threshold: 0,
   });
   const [refText, inViewText] = useInView({
-    threshold: 0.1,
+    threshold: 0,
   });
 
   const srcs = [
@@ -62,7 +62,7 @@ const About = (props) => {
       {...props}
       minH="100vh"
       w="full"
-      backgroundColor={"lightbeige"}
+      backgroundColor={"black"}
       direction={{ base: "column", md: "row" }}
     >
       <Flex
@@ -112,7 +112,7 @@ const About = (props) => {
             base: "normal",
             md: "tight",
           }}
-          color="black"
+          color="lightbeige"
         >
           <Typewriter
             options={{
@@ -140,7 +140,7 @@ const About = (props) => {
           fontWeight={300}
           // fontWeight="thin"
           letterSpacing="wider"
-          color={"black"}
+          color={"lightbeige"}
         >
           I’m Ait daoud El Houssein, a professional and talented Software
           Developer with design skills. I am passionate about leveraging my

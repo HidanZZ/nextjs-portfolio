@@ -35,10 +35,7 @@ const SocialButton = ({ children, label, href }) => {
 
 export default function Footer() {
   return (
-    <Box
-      bg={useColorModeValue("gray.50", "gray.900")}
-      color={useColorModeValue("gray.700", "gray.200")}
-    >
+    <Box bg={"black"} color={useColorModeValue("gray.700", "gray.200")}>
       <Container
         as={Stack}
         maxW={"6xl"}
@@ -49,17 +46,6 @@ export default function Footer() {
         align={{ base: "center", md: "center" }}
       >
         <Text>© 2022 HIDANZ. All rights reserved</Text>
-        <Stack direction={"row"} spacing={6}>
-          <SocialButton label={"Twitter"} href={"#"}>
-            <FaTwitter />
-          </SocialButton>
-          <SocialButton label={"YouTube"} href={"#"}>
-            <FaYoutube />
-          </SocialButton>
-          <SocialButton label={"Instagram"} href={"#"}>
-            <FaInstagram />
-          </SocialButton>
-        </Stack>
       </Container>
     </Box>
   );

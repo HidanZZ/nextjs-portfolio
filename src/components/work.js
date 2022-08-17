@@ -118,12 +118,7 @@ const Work = (props) => {
   // console.log("data", data[screens[selected].title]);
   return (
     <Box
-      // css={{
-      //   backgroundImage: props.bg,
-      //   backgroundAttachment: "fixed",
-      // }}
       backgroundColor={"black"}
-      boxShadow={"inset 0 7px 9px -7px rgba(0,0,0,0.4)"}
       {...props}
       ref={props.innerRef}
       as={motion.div}
@@ -133,15 +128,7 @@ const Work = (props) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        // justifyContent: "space-between",
-        // position: "relative",
-        // display: "grid",
-        // placeItems: "center",
       }}
-      // justify={"space-between"}
-      // align="center"
-      // flex={1}
-      // flexDirection="column"
       p={4}
       pt={20}
     >
@@ -300,7 +287,7 @@ const Card = ({ data, cardKey }) => {
       userSelect={"none"}
       w="280px"
       m={4}
-      bg={"lightbeige"}
+      bg={"white"}
       key={cardKey}
       as={motion.div}
       initial={{
@@ -329,8 +316,9 @@ const Card = ({ data, cardKey }) => {
       direction="column"
       overflow="hidden"
     >
-      <Box pos="relative" as={motion.div} whileHover="hover">
+      <Box pos="relative" p={2} as={motion.div} whileHover="hover">
         <Image
+          borderRadius={8}
           w="100%"
           src="https://source.unsplash.com/random/?Programming&5"
           // src={data.image}

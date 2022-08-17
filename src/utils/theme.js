@@ -19,6 +19,7 @@ const theme = extendTheme({
     blue: "#2D4263",
     beige: "#ECDBBA",
     lightbeige: "rgba(214, 233, 231, 1)",
+    lightblue: "#319DA0",
   },
   styles: {
     global: {

@@ -23,6 +23,7 @@ const Home = ({ children }) => {
     }
   });
   Emitter.on("scrollToWorks", () => {
+    console.log("scroll to works");
     if (worksRef.current) {
       worksRef.current.scrollIntoView({ behavior: "smooth" });
     }

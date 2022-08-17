@@ -115,6 +115,7 @@ export default function NavBar({}) {
               <motion.a
                 onClick={() => {
                   setNavOpen(false);
+                  Emitter.emit("scrollToTop");
                 }}
                 variants={linkVarientOne}
                 whileHover={hoverVariants}
@@ -134,7 +135,7 @@ export default function NavBar({}) {
               <motion.a
                 onClick={() => {
                   setNavOpen(false);
-                  Emitter.emit("scrollToWork");
+                  Emitter.emit("scrollToWorks");
                 }}
                 variants={linkVarientOne}
                 whileHover={hoverVariants}

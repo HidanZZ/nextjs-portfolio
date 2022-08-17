@@ -138,7 +138,7 @@ export default function ContactFormWithSocialButtons(props) {
               </Stack>
 
               <Box
-                bg={useColorModeValue("white", "gray.700")}
+                bg={"black"}
                 borderRadius="lg"
                 p={{ base: 6, md: 8 }}
                 color={useColorModeValue("gray.700", "whiteAlpha.900")}
