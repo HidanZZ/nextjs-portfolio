@@ -2,7 +2,6 @@ import { Box } from "@chakra-ui/react";
 
 import { motion, useAnimationControls, useInView } from "framer-motion";
 
-import ScrollAnimation from "./ScrollAnimation";
 import HeroText from "./HeroText";
 export default function Hero(props) {
   return (
@@ -11,8 +10,6 @@ export default function Hero(props) {
         {props.children}
 
         <HeroText></HeroText>
-
-        {/* <ScrollAnimation /> */}
       </Box>
     </Box>
   );

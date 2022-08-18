@@ -245,7 +245,7 @@ const Work = (props) => {
           <AnimatePresence>
             {data[screens[selected].title].map((item, i) => (
               <chakra.span key={i}>
-                <Card data={item} />
+                <Card data={item} key={i} />
               </chakra.span>
             ))}
           </AnimatePresence>
