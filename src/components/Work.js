@@ -24,26 +24,26 @@ const Work = (props) => {
   const [cardWrapperRef, inViewCardWrapper] = useInView({
     threshold: 0,
   });
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(1);
   const [titleRef, inViewTitle] = useInView({
     threshold: 0.1,
   });
   const screens = [
     {
       title: "All",
-      color: "#C84B31",
+      color: "white",
     },
     {
       title: "Games",
-      color: "#C84B31",
+      color: "white",
     },
     {
       title: "Apps",
-      color: "#C84B31",
+      color: "white",
     },
     {
       title: "Web",
-      color: "#C84B31",
+      color: "white",
     },
   ];
   const data = {
@@ -179,21 +179,22 @@ const Work = (props) => {
           <chakra.li
             as={motion.li}
             listStyleType={"none"}
-            p={0}
+            p={2}
             m={0}
             userSelect="none"
-            animate={
-              i === selected
-                ? {
-                    fontSize: "2.5rem",
-                    fontWeight: "700",
-                    transition: { ease: "easeIn", duration: 0.2 },
-                  }
-                : {
-                    fontSize: "1.3rem",
-                    transition: { ease: "easeIn", duration: 0.2 },
-                  }
-            }
+            // animate={
+            //   i === selected
+            //     ? {
+            //         fontSize: "2.5rem",
+            //         // fontWeight: "700",
+            //         transition: { ease: "easeIn", duration: 0.2 },
+            //       }
+            //     : {
+            //         fontSize: "1.3rem",
+            //         transition: { ease: "easeIn", duration: 0.2 },
+            //       }
+            // }
+            fontSize={{ base: "md", md: "lg" }}
             // transition={{
             //   ease: "easeInOut",
             //   duration: 0.5,
@@ -204,6 +205,7 @@ const Work = (props) => {
             mr={{ base: 3, md: 5 }}
             pos="relative"
             cursor="pointer"
+            zIndex={1}
             // style={{ color: i === selected ? color : "" }}
             color={i === selected ? color : "white"}
             onClick={() => setSelected(i)}
@@ -212,13 +214,15 @@ const Work = (props) => {
               <chakra.div
                 as={motion.div}
                 w="100%"
-                h="8px"
-                // borderRadius="4px"
+                h="100%"
+                zIndex={-1}
+                borderRadius="4px"
                 bg="black"
                 position="absolute"
-                bottom="-4px"
+                left={0}
+                top={0}
                 layoutId="underline"
-                style={{ backgroundColor: color }}
+                style={{ backgroundColor: "#C84B31" }}
               />
             )}
             {title}
@@ -364,14 +368,6 @@ const Card = ({ data, cardKey }) => {
         bg="rgba(0,0,0,.1)"
         borderTop="1px solid rgba(0,0,0,.1)"
       >
-        {/* <Image
-          h={34}
-          borderRadius="999px"
-          border="1px solid"
-          borderColor="gray.400"
-          mr={2}
-          src={data.author.imageURL}
-        /> */}
         <Box flex="1" fontWeight="600" fontSize="xs" opacity={0.8}>
           <Text>Made with</Text>
           <HStack>
