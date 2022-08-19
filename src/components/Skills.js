@@ -56,16 +56,13 @@ const Skills = (props) => {
   );
 };
 
-function Grid({ delayPerPixel = 0.001, numItems = 25 }) {
+function Grid({ delayPerPixel = 0.002 }) {
   const originOffset = useRef({ top: 0, left: 0 });
-  const controls = useAnimation();
   const [ref, inView] = useInView({
     threshold: 0.1,
   });
   const [skills, setSkills] = useState([]);
-  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    console.log("render");
     let temp = [];
     for (const key in icons) {
       getDominantColor(icons[key])
@@ -79,8 +76,6 @@ function Grid({ delayPerPixel = 0.001, numItems = 25 }) {
         .catch((err) => {});
     }
     setSkills(temp);
-    console.log("temp", skills);
-    console.log("leght", skills.length === Object.keys(icons).length);
   }, []);
 
   return (
@@ -99,29 +94,6 @@ function Grid({ delayPerPixel = 0.001, numItems = 25 }) {
       animate={inView ? "visible" : "hidden"}
       variants={{}}
     >
-      {/* {Array.from({ length: numItems }).map((_, i) => (
-        <GridItem
-          key={i}
-          i={i}
-          originIndex={0}
-          delayPerPixel={delayPerPixel}
-          originOffset={originOffset}
-        />
-      ))} */}
-      {/* {icons.map((icon, i) => (
-        
-      ))} */}
-
-      {/* {Object.entries(icons).map(([key, value], i) => (
-        <GridItem
-          icon={value}
-          key={i}
-          i={i}
-          originIndex={0}
-          delayPerPixel={delayPerPixel}
-          originOffset={originOffset}
-        />
-      ))} */}
       {skills.map((skill, i) => (
         <GridItem
           icon={skill.icon}
