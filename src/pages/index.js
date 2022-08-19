@@ -7,6 +7,7 @@ import About from "../components/About";
 import Testimonials from "../components/Testimonials";
 import ContactFormWithSocialButtons from "../components/Contact";
 import Emitter from "../services/emitter";
+import Skills from "../components/Skills";
 const Home = ({ children }) => {
   const aboutRef = useRef(null);
   const worksRef = useRef(null);
@@ -66,7 +67,12 @@ const Home = ({ children }) => {
         innerRef={aboutRef}
         mt={{ base: 3, md: 0 }}
       />
-
+      <Skills
+        css={{
+          backgroundImage: CONFETTI_LIGHT,
+          backgroundAttachment: "fixed",
+        }}
+      ></Skills>
       <Work
         css={{
           backgroundImage: CONFETTI_LIGHT,
