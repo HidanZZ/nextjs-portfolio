@@ -98,7 +98,7 @@ html {
  * @link https://github.com/jonsuh/hamburgers
  */
 .hamburger {
-    z-index: 9999;
+    z-index: 8888;
     position: fixed;
     top: 20px;
     right: 20px;

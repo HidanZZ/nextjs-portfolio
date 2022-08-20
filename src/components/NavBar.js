@@ -135,9 +135,19 @@ export default function NavBar({}) {
               <motion.a
                 onClick={() => {
                   setNavOpen(false);
-                  Emitter.emit("scrollToWorks");
+                  Emitter.emit("scrollToSkills");
                 }}
                 variants={linkVarientOne}
+                whileHover={hoverVariants}
+              >
+                Skills & Frameworks
+              </motion.a>
+              <motion.a
+                onClick={() => {
+                  setNavOpen(false);
+                  Emitter.emit("scrollToWorks");
+                }}
+                variants={linkVarientTwo}
                 whileHover={hoverVariants}
               >
                 Works
@@ -147,7 +157,7 @@ export default function NavBar({}) {
                   setNavOpen(false);
                   Emitter.emit("scrollToTestimonials");
                 }}
-                variants={linkVarientTwo}
+                variants={linkVarientOne}
                 whileHover={hoverVariants}
               >
                 Testimonials
@@ -157,7 +167,7 @@ export default function NavBar({}) {
                   setNavOpen(false);
                   Emitter.emit("scrollToContact");
                 }}
-                variants={linkVarientOne}
+                variants={linkVarientTwo}
                 whileHover={hoverVariants}
               >
                 Contact Us

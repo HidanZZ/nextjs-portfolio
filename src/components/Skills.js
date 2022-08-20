@@ -62,6 +62,7 @@ function Grid({ delayPerPixel = 0.002 }) {
     threshold: 0.1,
   });
   const [skills, setSkills] = useState([]);
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
     let temp = [];
     for (const key in icons) {
@@ -76,6 +77,7 @@ function Grid({ delayPerPixel = 0.002 }) {
         .catch((err) => {});
     }
     setSkills(temp);
+    setLoaded(true);
   }, []);
 
   return (
@@ -89,23 +91,25 @@ function Grid({ delayPerPixel = 0.002 }) {
       justifyContent={"center"}
       flexWrap={"wrap"}
       initial="hidden"
-      //   animate={controls}
-      //   flex={1}
       animate={inView ? "visible" : "hidden"}
       variants={{}}
     >
-      {skills.map((skill, i) => (
-        <GridItem
-          icon={skill.icon}
-          color={skill.color}
-          title={skill.name}
-          key={i}
-          i={i}
-          originIndex={0}
-          delayPerPixel={delayPerPixel}
-          originOffset={originOffset}
-        />
-      ))}
+      {loaded ? (
+        skills.map((skill, i) => (
+          <GridItem
+            icon={skill.icon}
+            color={skill.color}
+            title={skill.name}
+            key={i}
+            i={i}
+            originIndex={0}
+            delayPerPixel={delayPerPixel}
+            originOffset={originOffset}
+          />
+        ))
+      ) : (
+        <></>
+      )}
     </Box>
   );
 }
@@ -173,6 +177,7 @@ function GridItem({
         w={"80px"}
         h="80px"
         bg={"white"}
+        mb={2}
       >
         <Box
           pos={"absolute"}
@@ -193,7 +198,7 @@ function GridItem({
           objectFit={"contain"}
         />
       </Box>
-      <chakra.span userSelect={"none"} mt={3}>
+      <chakra.span fontWeight={300} letterSpacing={1} userSelect={"none"}>
         {title}
       </chakra.span>
     </Box>

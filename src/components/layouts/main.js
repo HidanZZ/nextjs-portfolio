@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Box } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
 import ThreeDotsWave from "../ThreeDotsWave";
@@ -11,14 +11,37 @@ const Main = (props) => {
       opacity: 0,
     },
   };
+  //on first render
+
   return (
     <Box>
-      {!props.loaded && <ThreeDotsWave />}
+      <AnimatePresence>
+        {!props.loaded && (
+          <Box
+            as={motion.div}
+            initial={{ top: "0" }}
+            animate={{ top: "0" }}
+            exit={{ top: "-100vh", transition: { duration: 1 } }}
+            w={"100vw"}
+            h={"100vh"}
+            position="fixed"
+            top={0}
+            left={0}
+            display="flex"
+            justify="center"
+            align="center"
+            zIndex={9999}
+            backgroundColor={"black"}
+          >
+            <ThreeDotsWave />
+          </Box>
+        )}
+      </AnimatePresence>
       <motion.div
         as="main"
-        variants={variants}
-        initial="invisible"
-        animate={props.loaded ? "visible" : "invisible"}
+        // variants={variants}
+        // initial="invisible"
+        // // animate={props.loaded ? "visible" : "invisible"}
       >
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
