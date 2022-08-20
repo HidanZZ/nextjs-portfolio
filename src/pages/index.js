@@ -9,15 +9,12 @@ import ContactFormWithSocialButtons from "../components/Contact";
 import Emitter from "../services/emitter";
 import Skills from "../components/Skills";
 const Home = ({ children }) => {
+  const skillsRef = useRef(null);
   const aboutRef = useRef(null);
   const worksRef = useRef(null);
   const testRef = useRef(null);
   const contactRef = useRef(null);
-  useEffect(() => {
-    if (aboutRef.current) {
-      aboutRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [aboutRef]);
+
   Emitter.on("scrollToAbout", () => {
     if (aboutRef.current) {
       aboutRef.current.scrollIntoView({ behavior: "smooth" });
@@ -37,6 +34,11 @@ const Home = ({ children }) => {
     Emitter.on("scrollToContact", () => {
       if (contactRef.current) {
         contactRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    }),
+    Emitter.on("scrollToSkills", () => {
+      if (skillsRef.current) {
+        skillsRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }),
     Emitter.on("scrollToTop", () => {
@@ -68,6 +70,7 @@ const Home = ({ children }) => {
         mt={{ base: 3, md: 0 }}
       />
       <Skills
+        innerRef={skillsRef}
         css={{
           backgroundImage: CONFETTI_LIGHT,
           backgroundAttachment: "fixed",

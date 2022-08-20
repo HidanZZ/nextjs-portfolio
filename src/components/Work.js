@@ -24,7 +24,7 @@ const Work = (props) => {
   const [cardWrapperRef, inViewCardWrapper] = useInView({
     threshold: 0,
   });
-  const [selected, setSelected] = useState(1);
+  const [selected, setSelected] = useState(0);
   const [titleRef, inViewTitle] = useInView({
     threshold: 0.1,
   });
@@ -115,6 +115,17 @@ const Work = (props) => {
     ],
   };
   data.All = data.Games.concat(data.Apps, data.Web);
+  const tabContentVariant = {
+    active: {
+      display: "flex",
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+    inactive: {
+      display: "none",
+    },
+  };
   // console.log("data", data[screens[selected].title]);
   return (
     <Box
@@ -182,26 +193,8 @@ const Work = (props) => {
             p={2}
             m={0}
             userSelect="none"
-            // animate={
-            //   i === selected
-            //     ? {
-            //         fontSize: "2.5rem",
-            //         // fontWeight: "700",
-            //         transition: { ease: "easeIn", duration: 0.2 },
-            //       }
-            //     : {
-            //         fontSize: "1.3rem",
-            //         transition: { ease: "easeIn", duration: 0.2 },
-            //       }
-            // }
             fontSize={{ base: "md", md: "lg" }}
-            // transition={{
-            //   ease: "easeInOut",
-            //   duration: 0.5,
-            // }}
-
             key={i}
-            // className={`title ${i === selected && "selected"}`}
             mr={{ base: 3, md: 5 }}
             pos="relative"
             cursor="pointer"
@@ -217,59 +210,58 @@ const Work = (props) => {
                 h="100%"
                 zIndex={-1}
                 borderRadius="4px"
-                bg="black"
                 position="absolute"
+                bg={"orange"}
                 left={0}
                 top={0}
                 layoutId="underline"
-                style={{ backgroundColor: "#C84B31" }}
+                transition={{
+                  type: "spring",
+                  stiffness: 500,
+                  damping: 30,
+                }}
               />
             )}
             {title}
           </chakra.li>
         ))}
       </chakra.ol>
-      <Box mb={20} pos={"relative"} minW="80%" maxW={"80%"}>
+
+      <Box mb={20} minW="80%" h={"100%"} maxW={"80%"}>
         <Flex
           width={"full"}
           flexGrow={1}
           ref={cardWrapperRef}
-          as={motion.div}
-          initial={{ x: -100, opacity: 0 }}
-          animate={
-            inViewCardWrapper ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }
-          }
-          pos="absolute"
           mt={4}
-          key={selected}
           flexWrap={"wrap"}
-          p={{ base: 4, md: 8 }}
           justifyContent="center"
+          as={motion.div}
+          initial={{ opacity: 0 }}
+          animate={
+            inViewCardWrapper
+              ? { opacity: 1, transition: { duration: 1 } }
+              : { opacity: 0 }
+          }
+          variants={tabContentVariant}
         >
           <AnimatePresence>
-            {data[screens[selected].title].map((item, i) => (
-              <chakra.span key={i}>
-                <Card data={item} key={i} />
-              </chakra.span>
-            ))}
+            <Flex
+              as={motion.div}
+              variants={tabContentVariant}
+              animate={"active"}
+              initial="inactive"
+              flexWrap={"wrap"}
+              p={{ base: 4, md: 8 }}
+              justifyContent="center"
+              key={selected}
+            >
+              {data[screens[selected].title].map((item, i) => (
+                <chakra.span key={i} m={0}>
+                  <Card data={item} key={i} />
+                </chakra.span>
+              ))}
+            </Flex>
           </AnimatePresence>
-        </Flex>
-
-        <Flex
-          width={"full"}
-          flexGrow={1}
-          pos="relative"
-          mt={4}
-          flexWrap={"wrap"}
-          p={{ base: 4, md: 8 }}
-          justifyContent="center"
-          visibility={"hidden"}
-        >
-          {data[screens[selected].title].map((item, i) => (
-            <chakra.span key={i}>
-              <Card data={item} />
-            </chakra.span>
-          ))}
         </Flex>
       </Box>
     </Box>
@@ -285,6 +277,22 @@ const Card = ({ data, cardKey }) => {
       opacity: 1,
     },
   };
+  const cardVariant = {
+    active: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+    inactive: {
+      opacity: 0,
+      y: 10,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
   return (
     <Flex
       ref={ref}
@@ -294,26 +302,7 @@ const Card = ({ data, cardKey }) => {
       bg={"white"}
       key={cardKey}
       as={motion.div}
-      initial={{
-        opacity: 0,
-        transition: { ease: "easeInOut", duration: 0.5 },
-      }}
-      animate={{
-        opacity: 1,
-        transition: { ease: "easeInOut", duration: 0.5 },
-      }}
-      exit={{
-        opacity: 0,
-        transition: { ease: "easeInOut", duration: 0.5 },
-      }}
-      // initial={{
-      //   y: 50,
-      // }}
-      // animate={
-      //   inView
-      //     ? { scale: 1, transition: { ease: "easeInOut", duration: 0.5 } }
-      //     : { scale: 0, transition: { ease: "easeInOut", duration: 0.5 } }
-      // }
+      variants={cardVariant}
       color={"gray.900"}
       borderRadius={8}
       boxShadow="xl"
