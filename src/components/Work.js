@@ -250,6 +250,7 @@ const Work = (props) => {
               variants={tabContentVariant}
               animate={"active"}
               initial="inactive"
+              exit={"inactive"}
               flexWrap={"wrap"}
               p={{ base: 4, md: 8 }}
               justifyContent="center"
