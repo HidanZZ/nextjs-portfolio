@@ -13,7 +13,12 @@ const About = (props) => {
   const [refText, inViewText] = useInView({
     threshold: 0,
   });
-
+  useEffect(() => {
+    const interval = setInterval(() => {
+      paginate(1);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
   const srcs = [
     "https://source.unsplash.com/random/?Programming&1",
     "https://source.unsplash.com/random/?Programming&2",
@@ -48,7 +53,9 @@ const About = (props) => {
   const [[page, direction], setPage] = useState([0, 0]);
 
   const paginate = (newDirection) => {
-    setPage([page + newDirection, newDirection]);
+    setPage(([page, direction]) => {
+      return [page + newDirection, newDirection];
+    });
   };
   const imageIndex = (page) => wrap(0, srcs.length, page);
   const swipeConfidenceThreshold = 10000;

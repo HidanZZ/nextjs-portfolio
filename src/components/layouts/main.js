@@ -37,15 +37,10 @@ const Main = (props) => {
           </Box>
         )}
       </AnimatePresence>
-      <motion.div
-        as="main"
-        // variants={variants}
-        // initial="invisible"
-        // // animate={props.loaded ? "visible" : "invisible"}
-      >
+      <motion.div as="main">
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <title>Portfilio</title>
+          <title>Hidanz portfolio</title>
         </Head>
         <NavBar />
         <Box w="full" maxW="100vw">
