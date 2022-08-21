@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
 import { range } from "lodash-es";
+import Card from "./Card";
 import { useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import DevIcon from "devicon-react-svg";
@@ -257,8 +258,13 @@ const Work = (props) => {
               key={selected}
             >
               {data[screens[selected].title].map((item, i) => (
-                <chakra.span key={i} m={0}>
-                  <Card data={item} key={i} />
+                <chakra.span key={i} m={2}>
+                  <Card
+                    title={item.title}
+                    subtitle={item.description}
+                    tag={item.category}
+                    bgPhoto={`https://source.unsplash.com/random/?nature&${i}`}
+                  ></Card>
                 </chakra.span>
               ))}
             </Flex>
@@ -266,108 +272,6 @@ const Work = (props) => {
         </Flex>
       </Box>
     </Box>
-  );
-};
-
-const Card = ({ data, cardKey }) => {
-  const [ref, inView] = useInView({
-    threshold: 0,
-  });
-  const hoverCardVariants = {
-    hover: {
-      opacity: 1,
-    },
-  };
-  const cardVariant = {
-    active: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-    inactive: {
-      opacity: 0,
-      y: 10,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-  return (
-    <Flex
-      ref={ref}
-      userSelect={"none"}
-      w="280px"
-      m={4}
-      bg={"white"}
-      key={cardKey}
-      as={motion.div}
-      variants={cardVariant}
-      color={"gray.900"}
-      borderRadius={8}
-      boxShadow="xl"
-      direction="column"
-      overflow="hidden"
-    >
-      <Box pos="relative" p={2} as={motion.div} whileHover="hover">
-        <Image
-          borderRadius={8}
-          w="100%"
-          src="https://source.unsplash.com/random/?Programming&5"
-          // src={data.image}
-        ></Image>
-        <Box
-          pos="absolute"
-          w={"100%"}
-          h={"100%"}
-          bg="rgba(0,0,0,0.5)"
-          top={0}
-          left={0}
-          display={"flex"}
-          justifyContent="center"
-          alignItems="center"
-          as={motion.div}
-          initial={{ opacity: 0 }}
-          variants={hoverCardVariants}
-        >
-          <IconButton
-            borderRadius={"50%"}
-            color="white"
-            icon={<ExternalLinkIcon />}
-            _hover={{ bg: "orange" }}
-          />
-        </Box>
-      </Box>
-      <Box p={3}>
-        <Text fontSize="xs" opacity={0.65}>
-          {data.category}
-        </Text>
-        <Text fontSize="sm" fontWeight="600">
-          {data.title}
-        </Text>
-        <Text as={motion.div} fontSize="xs" opacity={0.65} noOfLines={2}>
-          {data.description}
-        </Text>
-      </Box>
-      <Flex
-        alignItems="center"
-        w="100%"
-        px={3}
-        py={2}
-        bg="rgba(0,0,0,.1)"
-        borderTop="1px solid rgba(0,0,0,.1)"
-      >
-        <Box flex="1" fontWeight="600" fontSize="xs" opacity={0.8}>
-          <Text>Made with</Text>
-          <HStack>
-            {data.madeWith.map((item, i) => (
-              <Image h="32px" w="32px" src={icons[item]}></Image>
-            ))}
-          </HStack>
-        </Box>
-      </Flex>
-    </Flex>
   );
 };
 export default Work;
