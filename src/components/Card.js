@@ -1,6 +1,7 @@
-import { chakra } from "@chakra-ui/react";
+import { chakra, Image } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import icons from "../utils/icons";
 
 const cardVariant = {
   active: {
@@ -18,26 +19,27 @@ const cardVariant = {
     },
   },
 };
-
+const overlayHover = {
+  active: {},
+};
 const Card = ({
   title,
   subtitle,
   titleColor = "white",
   subtitleColor = "white",
-  borderBottomColor = "#E33C36",
-  iconName,
-  iconSize = 2,
-  iconColor = "white",
+  borderBottomColor = "#fff",
+  madeWith,
   bgPhoto,
   tag,
   tagColor = "white",
-  tagBg = "#E33C36",
+  tagBg = "#fff",
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <chakra.div
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
+      onTouchEnd={() => setIsHovered((prev) => !prev)}
       variants={cardVariant}
       as={motion.div}
       width={"280px"}
@@ -68,11 +70,35 @@ const Card = ({
           bottom={"0"}
           zIndex={"10"}
           left={"0"}
-          borderRadius={"8px"}
+          // borderRadius={"8px"}
+
+          borderTopRadius={"8px"}
           width={"100%"}
           height={"0"}
           bg={tagBg}
-        ></chakra.div>
+        >
+          <chakra.div
+            display={"flex"}
+            flexDirection={"column"}
+            alignItems={"center"}
+            justifyContent={"center"}
+            width={"100%"}
+            height={"100%"}
+          >
+            <chakra.div
+              opacity={isHovered ? 1 : 0}
+              width={"100%"}
+              display={"flex"}
+              flexDirection={"column"}
+              justifyContent={"space-between"}
+              alignItems={"flex-end"}
+              marginTop={"40px"}
+              marginBottom={"20px"}
+              color={"white"}
+              p={2}
+            ></chakra.div>
+          </chakra.div>
+        </chakra.div>
         <chakra.div
           display={"flex"}
           justifyContent={"space-between"}
@@ -105,14 +131,25 @@ const Card = ({
                 {tag && (
                   <chakra.span
                     marginLeft={"10px"}
-                    backgroundColor={tagBg}
+                    backgroundColor={"white"}
                     color={tagColor}
+                    display={"flex"}
+                    flexDirection={"row"}
                     padding={"5px 10px"}
                     borderRadius={"20px"}
                     fontSize={"12px"}
                     fontWeight={"600"}
                   >
-                    {tag}
+                    {madeWith.map((item, index) => (
+                      <Image
+                        key={index}
+                        src={icons[item]}
+                        alt={item}
+                        width={"20px"}
+                        height={"20px"}
+                        mx={1}
+                      />
+                    ))}
                   </chakra.span>
                 )}
               </chakra.div>
