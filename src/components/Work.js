@@ -263,6 +263,7 @@ const Work = (props) => {
                     title={item.title}
                     subtitle={item.description}
                     tag={item.category}
+                    madeWith={item.madeWith}
                     bgPhoto={`https://source.unsplash.com/random/?nature&${i}`}
                   ></Card>
                 </chakra.span>
