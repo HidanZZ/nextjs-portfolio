@@ -5,7 +5,7 @@ import { useRive, Layout, Fit, Alignment } from "@rive-app/react-canvas";
 import { useEffect, useState } from "react";
 import "../css/global.css";
 const App = ({ Component, pageProps, router }) => {
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
   const { rive, RiveComponent } = useRive({
     src: "hero-animation.riv",
     autoplay: true,

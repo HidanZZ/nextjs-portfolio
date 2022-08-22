@@ -171,7 +171,6 @@ function GridItem({
       originOffset.current = offset.current;
     }
   }, [delayPerPixel]);
-  console.log(icon);
   useEffect(() => {
     const dx = Math.abs(offset.current.left - originOffset.current.left);
     const dy = Math.abs(offset.current.top - originOffset.current.top);
