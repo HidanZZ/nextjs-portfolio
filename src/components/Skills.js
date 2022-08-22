@@ -8,6 +8,9 @@ const Skills = (props) => {
   const [titleRef, inViewTitle] = useInView({
     threshold: 0.1,
   });
+  const [subtitleRef, inViewSub] = useInView({
+    threshold: 1,
+  });
 
   return (
     <Box
@@ -52,11 +55,36 @@ const Skills = (props) => {
       </chakra.h1>
 
       <Grid></Grid>
+      <chakra.h1
+        ref={subtitleRef}
+        as={motion.div}
+        initial={{ opacity: 0, y: 100 }}
+        animate={inViewSub ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+        mt={8}
+        fontSize={{
+          base: "3xl",
+          md: "5xl",
+        }}
+        fontWeight="bold"
+        lineHeight={{
+          base: "shorter",
+          md: "none",
+        }}
+        letterSpacing={{
+          base: "normal",
+          md: "tight",
+        }}
+        color="white"
+        mb={8}
+        textAlign="center"
+      >
+        And <chakra.span color={"orange"}>Many</chakra.span> More ...
+      </chakra.h1>
     </Box>
   );
 };
 
-function Grid({ delayPerPixel = 0.002 }) {
+function Grid({ delayPerPixel = 0.0016 }) {
   const originOffset = useRef({ top: 0, left: 0 });
   const [ref, inView] = useInView({
     threshold: 0.1,
@@ -84,7 +112,7 @@ function Grid({ delayPerPixel = 0.002 }) {
     <Box
       ref={ref}
       p={8}
-      mt={20}
+      mt={8}
       maxW={{ base: "full", md: "70%", lg: "50%" }}
       as={motion.div}
       display="flex"
@@ -186,7 +214,7 @@ function GridItem({
           borderRadius={"50%"}
           w={"100%"}
           h={"100%"}
-          bg={hexToRgbA(color, 0.15)}
+          bg={hexToRgbA(color, 0.12)}
         ></Box>
         <Image
           pos={"absolute"}

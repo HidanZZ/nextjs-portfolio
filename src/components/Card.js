@@ -1,8 +1,11 @@
-import { chakra, Image } from "@chakra-ui/react";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
+
+import { chakra, Image, Tooltip } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import icons from "../utils/icons";
-
+import { EyeFill } from "@styled-icons/bootstrap";
+import { Github } from "@styled-icons/entypo-social";
 const cardVariant = {
   active: {
     opacity: 1,
@@ -19,27 +22,23 @@ const cardVariant = {
     },
   },
 };
-const overlayHover = {
-  active: {},
-};
 const Card = ({
   title,
   subtitle,
   titleColor = "white",
   subtitleColor = "white",
-  borderBottomColor = "#fff",
+  borderBottomColor = "#C84B31",
   madeWith,
   bgPhoto,
   tag,
-  tagColor = "white",
-  tagBg = "#fff",
+  tagColor = "#C84B31",
+  tagBg = "#C84B31",
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <chakra.div
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      onTouchEnd={() => setIsHovered((prev) => !prev)}
       variants={cardVariant}
       as={motion.div}
       width={"280px"}
@@ -70,8 +69,6 @@ const Card = ({
           bottom={"0"}
           zIndex={"10"}
           left={"0"}
-          // borderRadius={"8px"}
-
           borderTopRadius={"8px"}
           width={"100%"}
           height={"0"}
@@ -88,15 +85,60 @@ const Card = ({
             <chakra.div
               opacity={isHovered ? 1 : 0}
               width={"100%"}
+              height={"100%"}
               display={"flex"}
               flexDirection={"column"}
-              justifyContent={"space-between"}
-              alignItems={"flex-end"}
+              justifyContent={"space-around"}
+              alignItems={"center"}
               marginTop={"40px"}
               marginBottom={"20px"}
               color={"white"}
               p={2}
-            ></chakra.div>
+            >
+              <Tooltip
+                bg={"black"}
+                color={"white"}
+                borderRadius={"8px"}
+                label="Project Link"
+                hasArrow
+                placement="bottom"
+              >
+                <chakra.span
+                  width="80px"
+                  height="80px"
+                  cursor={"pointer"}
+                  bg={hexToRgba("#C84B31", 1)}
+                  borderRadius={"50%"}
+                  display={"flex"}
+                  justifyContent={"center"}
+                  alignItems={"center"}
+                >
+                  <EyeFill fill={"white"} size={50} />
+                </chakra.span>
+              </Tooltip>
+
+              <Tooltip
+                bg={"black"}
+                color={"white"}
+                borderRadius={"8px"}
+                label="View on Github"
+                hasArrow
+                placement="bottom"
+              >
+                <chakra.span
+                  cursor={"pointer"}
+                  width="80px"
+                  height="80px"
+                  bg={hexToRgba("#C84B31", 1)}
+                  borderRadius={"50%"}
+                  display={"flex"}
+                  justifyContent={"center"}
+                  alignItems={"center"}
+                >
+                  <Github fill={"white"} size={50} />
+                </chakra.span>
+              </Tooltip>
+            </chakra.div>
           </chakra.div>
         </chakra.div>
         <chakra.div
@@ -170,5 +212,11 @@ const Card = ({
     </chakra.div>
   );
 };
-
+//hex to rgba
+const hexToRgba = (hex, alpha) => {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+};
 export default Card;

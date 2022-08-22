@@ -19,6 +19,7 @@ import {
   chakra,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import { Fiverr } from "@styled-icons/simple-icons";
 import React from "react";
 import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from "react-icons/bs";
 import { MdEmail, MdOutlineEmail } from "react-icons/md";
@@ -113,7 +114,7 @@ export default function ContactFormWithSocialButtons(props) {
                     aria-label="twitter"
                     variant="ghost"
                     size="lg"
-                    icon={<BsTwitter size="28px" />}
+                    icon={<Fiverr size={28} />}
                     _hover={{
                       bg: "white",
                       color: useColorModeValue("white", "gray.700"),
