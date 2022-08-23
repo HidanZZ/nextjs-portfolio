@@ -62,8 +62,8 @@ const Skills = (props) => {
         animate={inViewSub ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
         mt={8}
         fontSize={{
-          base: "3xl",
-          md: "5xl",
+          base: "1xl",
+          md: "3xl",
         }}
         fontWeight="bold"
         lineHeight={{

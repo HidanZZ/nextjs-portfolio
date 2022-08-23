@@ -107,6 +107,7 @@ export class GlitchEffect extends Effect {
     perturbationMap = null,
     dtSize = 64,
     onFinish = null,
+    mode = GlitchMode.SPORADIC,
   } = {}) {
     super("GlitchEffect", fragmentShader, {
       uniforms: new Map([
@@ -160,7 +161,7 @@ export class GlitchEffect extends Effect {
     this.onFinish = onFinish;
     this.strength = strength;
 
-    this.mode = GlitchMode.SPORADIC;
+    this.mode = mode;
 
     this.ratio = ratio;
 
@@ -385,7 +386,7 @@ export class GlitchEffect extends Effect {
       this.uniforms.get("random").value = r;
 
       // TODO change > to <.
-      if ((trigger && r > this.ratio) || mode === GlitchMode.CONSTANT_WILD) {
+      if ((trigger && r < this.ratio) || mode === GlitchMode.CONSTANT_WILD) {
         active = true;
 
         r *= s.y * 0.03;
