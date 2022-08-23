@@ -402,17 +402,15 @@ function Pagination({ currentPage, setPage }) {
   // Wrap all the pagination dots with AnimateSharedPresence so we can detect
   // when dots with a layoutId are removed/added
   return (
-    <AnimateSharedLayout>
-      <Box display={"flex"} justifyContent={"center"} mt="30px">
-        {pages.map((page, i) => (
-          <Dot
-            key={i}
-            onClick={() => setPage(i)}
-            isSelected={i === currentPage}
-          />
-        ))}
-      </Box>
-    </AnimateSharedLayout>
+    <Box display={"flex"} justifyContent={"center"} mt="30px">
+      {pages.map((page, i) => (
+        <Dot
+          key={i}
+          onClick={() => setPage(i)}
+          isSelected={i === currentPage}
+        />
+      ))}
+    </Box>
   );
 }
 
