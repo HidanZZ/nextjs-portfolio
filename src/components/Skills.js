@@ -213,7 +213,7 @@ function GridItem({
           borderRadius={"50%"}
           w={"100%"}
           h={"100%"}
-          bg={hexToRgbA(color, 0.12)}
+          bg={"blackAlpha.100"}
         ></Box>
         <Image
           pos={"absolute"}
