@@ -38,7 +38,7 @@ export default function ContactFormWithSocialButtons(props) {
       align="center"
       justify="center"
       ref={props.innerRef}
-      backgroundColor="black"
+      backgroundColor="transparent"
     >
       <Box
         borderRadius="lg"
@@ -139,7 +139,7 @@ export default function ContactFormWithSocialButtons(props) {
               </Stack>
 
               <Box
-                bg={"black"}
+                bg={"transparent"}
                 borderRadius="lg"
                 p={{ base: 6, md: 8 }}
                 color={useColorModeValue("gray.700", "whiteAlpha.900")}

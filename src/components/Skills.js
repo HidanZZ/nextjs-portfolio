@@ -62,8 +62,8 @@ const Skills = (props) => {
         animate={inViewSub ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
         mt={8}
         fontSize={{
-          base: "3xl",
-          md: "5xl",
+          base: "1xl",
+          md: "3xl",
         }}
         fontWeight="bold"
         lineHeight={{
@@ -171,7 +171,6 @@ function GridItem({
       originOffset.current = offset.current;
     }
   }, [delayPerPixel]);
-  console.log(icon);
   useEffect(() => {
     const dx = Math.abs(offset.current.left - originOffset.current.left);
     const dy = Math.abs(offset.current.top - originOffset.current.top);
@@ -214,7 +213,7 @@ function GridItem({
           borderRadius={"50%"}
           w={"100%"}
           h={"100%"}
-          bg={hexToRgbA(color, 0.12)}
+          bg={"blackAlpha.100"}
         ></Box>
         <Image
           pos={"absolute"}

@@ -61,6 +61,7 @@ html {
     transition: all 1.5s;
     overflow-x: hidden;
 }
+
 /* .typewriter-wrapper{
     margin-bottom: 5rem;
     font-weight: bold;
@@ -249,4 +250,13 @@ html {
 }
 .nav-content a:hover {
     cursor: pointer;
+}
+.canvas {
+    height: 100vh !important;
+    position: fixed;
+    top: 0;
+    z-index: -1;
+}
+*{
+    z-index: 1;
 }
