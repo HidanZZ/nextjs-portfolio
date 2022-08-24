@@ -15,28 +15,6 @@ const Main = (props) => {
 
   return (
     <Box>
-      <AnimatePresence>
-        {!props.loaded && (
-          <Box
-            as={motion.div}
-            initial={{ top: "0" }}
-            animate={{ top: "0" }}
-            exit={{ top: "-100vh", transition: { duration: 1 } }}
-            w={"100vw"}
-            h={"100vh"}
-            position="fixed"
-            top={0}
-            left={0}
-            display="flex"
-            justify="center"
-            align="center"
-            zIndex={9999}
-            backgroundColor={"black"}
-          >
-            <ThreeDotsWave />
-          </Box>
-        )}
-      </AnimatePresence>
       <motion.div as="main">
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />

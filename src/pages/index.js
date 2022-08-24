@@ -1,8 +1,6 @@
 // import { useEffect, useState } from "react";
-import Hero from "../components/Hero";
 import { Box, VStack } from "@chakra-ui/react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { transform } from "framer-motion";
 import Work from "../components/Work";
 import About from "../components/About";
 import Testimonials from "../components/Testimonials";
@@ -10,12 +8,12 @@ import ContactFormWithSocialButtons from "../components/Contact";
 import Emitter from "../services/emitter";
 import Skills from "../components/Skills";
 import { EffectComposer } from "@react-three/postprocessing";
-import { useThree, Canvas, useFrame } from "@react-three/fiber";
+import { useThree, Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { Glitch } from "../shaders/Glitch";
 import * as THREE from "three/src/Three";
 import { withExtend, useSpring, a, to } from "@react-spring/three";
 import { useScroll } from "framer-motion";
-import { GlitchMode } from "postprocessing";
+import { throttle } from "lodash-es";
 const Home = ({ children }) => {
   const skillsRef = useRef(null);
   const aboutRef = useRef(null);
@@ -24,10 +22,10 @@ const Home = ({ children }) => {
   const contactRef = useRef(null);
   const [textIndex, setTextIndex] = useState(0);
   const placeHolders = [
-    { text: "Hello", fontSize: 200 },
-    { text: "I'm Hidanz", fontSize: 150 },
-    { text: "Multi Talented Developer", fontSize: 100 },
-    { text: "check out my work", fontSize: 110 },
+    { text: "Hello", fontSize: { md: 200, sm: 100 } },
+    { text: "I'm Hidanz", fontSize: { md: 150, sm: 85 } },
+    { text: "Multi Talented Developer", fontSize: { md: 100, sm: 50 } },
+    { text: "check out my work", fontSize: { md: 110, sm: 60 } },
   ];
   const getIndex = (i) => {
     return i % placeHolders.length;
@@ -88,7 +86,17 @@ const Home = ({ children }) => {
       }}
     >
       {/* <Hero key={0}>{children}</Hero> */}
-      <Canvas style={{ position: "fixed" }}>
+      <Canvas
+        // camera={{
+        //   fov: 75,
+        //   position: [0, 0, 3],
+        //   aspect: size.width / size.height,
+        //   near: 0.1,
+        //   far: 800,
+        //   isPerspectiveCamera: true,
+        // }}
+        style={{ position: "fixed", top: "0", left: "0" }}
+      >
         <Background
           // color={"#191919"}
           color={top.to(
@@ -105,10 +113,15 @@ const Home = ({ children }) => {
           scrollY={scrollY}
           height={size.height}
         />
-        <Stars position={top.to((top) => [0, -1 + top / 20, 0])} />
+        {/* <StarsParticles position={top.to((top) => [0, -1 + top / 20, 0])} /> */}
 
+        <Stars position={top.to((top) => [0, -1 + top / 20, 0])} />
         <Text
-          fontSize={placeHolders[getIndex(textIndex)].fontSize}
+          fontSize={
+            size.width > 768
+              ? placeHolders[getIndex(textIndex)].fontSize.md
+              : placeHolders[getIndex(textIndex)].fontSize.sm
+          }
           opacity={top.to([0, size.height / 2], [1, 0])}
           position={top.to((top) => [0, -1 + top / 200, 0])}
         >
@@ -117,47 +130,23 @@ const Home = ({ children }) => {
       </Canvas>
       <Box key={0} minH={"100vh"}></Box>
       <About
-        css={{
-          backgroundImage: "transparent",
-          backgroundAttachment: "fixed",
-        }}
         key={1}
         // innerRef={aboutRef}
         mt={{ base: 3, md: 0 }}
       />
       <Skills
-        // innerRef={skillsRef}
-        css={{
-          backgroundImage: CONFETTI_LIGHT,
-          backgroundAttachment: "fixed",
-        }}
+      // innerRef={skillsRef}
       ></Skills>
       <Work
-        css={{
-          backgroundImage: CONFETTI_LIGHT,
-          backgroundAttachment: "fixed",
-        }}
         key={2}
         // innerRef={worksRef}
       />
       <Testimonials
-        css={{
-          backgroundImage: CONFETTI_LIGHT,
-          backgroundAttachment: "fixed",
-        }}
         // innerRef={testRef}
         key={3}
         mt={{ base: 3, md: 0 }}
       />
-      <ContactFormWithSocialButtons
-        css={{
-          backgroundImage: CONFETTI_LIGHT,
-          backgroundAttachment: "fixed",
-        }}
-        innerRef={contactRef}
-        key={4}
-        mt={4}
-      />
+      <ContactFormWithSocialButtons innerRef={contactRef} key={4} mt={4} />
     </div>
   );
 };
@@ -173,15 +162,7 @@ const Effects = ({ onFinish, scrollY, height }) => {
   });
   return (
     <EffectComposer>
-      {glitchActive && (
-        <Glitch
-          onFinish={onFinish}
-          // () => {
-          //             setTextIndex((prev) => prev + 1);
-          //           }
-          // mode={transform([0, size.height], [0, 1])(scrollY.current)}
-        />
-      )}
+      {glitchActive && <Glitch onFinish={onFinish} />}
     </EffectComposer>
   );
 };
@@ -247,26 +228,50 @@ function Background({ color }) {
 function Stars({ position }) {
   let group = useRef();
   let theta = 0;
-  useFrame(() => {
-    const r = 5 * Math.sin(degToRad((theta += 0.01)));
-    const s = Math.cos(degToRad(theta * 1.5));
-    group.current.rotation.set(r, r, r);
+  const mouse = useRef({ x: 0, y: 0, hasMoved: false });
+
+  useEffect(() => {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+
+    const updMouse = (ev) => {
+      mouse.current.x = (ev.clientX / w) * 20 - 10;
+      mouse.current.y = (ev.clientY / h) * 20 - 10;
+      mouse.current.hasMoved = true;
+    };
+    const throttled = throttle(updMouse, 60);
+
+    window.addEventListener("mousemove", throttled);
+    return () => {
+      window.removeEventListener("mousemove", throttled);
+    };
+  }, []);
+  useFrame((state, delta) => {
+    const r = 5 * Math.sin(degToRad((theta += 0.02)));
+    const s = Math.cos(degToRad(theta * 2));
+
     group.current.scale.set(s, s, s);
+    if (!mouse.current.hasMoved) {
+      group.current.rotation.set(r, r, r);
+    }
+    group.current.rotation.x -= mouse.current.y * delta * 0.035;
+    group.current.rotation.y -= mouse.current.x * delta * 0.035;
   });
   const [geo, mat, coords] = useMemo(() => {
     const geo = new THREE.SphereBufferGeometry(1, 10, 10);
     const mat = new THREE.MeshBasicMaterial({
-      color: "#C84B31",
+      color: "white",
       transparent: true,
     });
 
-    const coords = new Array(1000)
+    const coords = new Array(3000)
       .fill()
       .map((i) => [
-        Math.random() * 800 - 400,
-        Math.random() * 800 - 400,
-        Math.random() * 800 - 400,
+        2000 * Math.random() - 1000,
+        2000 * Math.random() - 1000,
+        2000 * Math.random() - 1000,
       ]);
+
     return [geo, mat, coords];
   }, []);
   return (
