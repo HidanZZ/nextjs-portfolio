@@ -3,7 +3,7 @@ import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { chakra, Image, Tooltip } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import icons from "../utils/icons";
+import { icons } from "../utils/icons";
 import { EyeFill } from "@styled-icons/bootstrap";
 import { Github } from "@styled-icons/entypo-social";
 const cardVariant = {

@@ -3,7 +3,7 @@ import { Box, chakra, Flex, Image } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useRef, useState, useLayoutEffect } from "react";
 import Vibrant from "node-vibrant";
-import icons from "../utils/icons";
+import { iconsWithNames } from "../utils/icons";
 const Skills = (props) => {
   const [titleRef, inViewTitle] = useInView({
     threshold: 0.1,
@@ -93,13 +93,14 @@ function Grid({ delayPerPixel = 0.0016 }) {
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
     let temp = [];
-    for (const key in icons) {
-      getDominantColor(icons[key])
+    for (const key in iconsWithNames) {
+      console.log(key);
+      getDominantColor(iconsWithNames[key].icon)
         .then((color) => {
           temp.push({
-            name: key,
+            name: iconsWithNames[key].name,
             color,
-            icon: icons[key],
+            icon: iconsWithNames[key].icon,
           });
         })
         .catch((err) => {});
@@ -225,7 +226,12 @@ function GridItem({
           objectFit={"contain"}
         />
       </Box>
-      <chakra.span fontWeight={300} letterSpacing={1} userSelect={"none"}>
+      <chakra.span
+        fontWeight={200}
+        fontSize={"md"}
+        letterSpacing={1}
+        userSelect={"none"}
+      >
         {title}
       </chakra.span>
     </Box>

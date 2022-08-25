@@ -20,7 +20,7 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Fiverr } from "@styled-icons/simple-icons";
-import React from "react";
+import { useState } from "react";
 import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from "react-icons/bs";
 import { MdEmail, MdOutlineEmail } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
@@ -30,6 +30,9 @@ export default function ContactFormWithSocialButtons(props) {
   const [socialRef, inViewSocial] = useInView({
     threshold: 0.1,
   });
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   return (
     <Flex
       {...props}
@@ -146,16 +149,43 @@ export default function ContactFormWithSocialButtons(props) {
                 shadow="base"
               >
                 <VStack spacing={{ base: 2, md: 5 }}>
-                  <FormControl isRequired>
+                  <FormControl
+                    isInvalid={() => {
+                      if (name.length < 1) {
+                        return true;
+                      } else {
+                        return false;
+                      }
+                    }}
+                    isRequired
+                  >
                     <FormLabel>Name</FormLabel>
 
                     <InputGroup>
                       <InputLeftElement children={<BsPerson />} />
-                      <Input type="text" name="name" placeholder="Your Name" />
+                      <Input
+                        type="text"
+                        name="name"
+                        placeholder="Your Name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
                     </InputGroup>
                   </FormControl>
 
-                  <FormControl isRequired>
+                  <FormControl
+                    isInvalid={() => {
+                      //validate email
+                      if (email.length < 1) {
+                        return true;
+                      } else if (isValidEmail(email)) {
+                        return true;
+                      } else {
+                        return false;
+                      }
+                    }}
+                    isRequired
+                  >
                     <FormLabel>Email</FormLabel>
 
                     <InputGroup>
@@ -163,16 +193,29 @@ export default function ContactFormWithSocialButtons(props) {
                       <Input
                         type="email"
                         name="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         placeholder="Your Email"
                       />
                     </InputGroup>
                   </FormControl>
 
-                  <FormControl isRequired>
+                  <FormControl
+                    isInvalid={() => {
+                      if (message.length < 100) {
+                        return true;
+                      } else {
+                        return false;
+                      }
+                    }}
+                    isRequired
+                  >
                     <FormLabel>Message</FormLabel>
 
                     <Textarea
                       name="message"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
                       placeholder="Your Message"
                       rows={6}
                       resize="none"
@@ -197,4 +240,9 @@ export default function ContactFormWithSocialButtons(props) {
       </Box>
     </Flex>
   );
+}
+function isValidEmail(email) {
+  var re =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
 }

@@ -122,31 +122,18 @@ const Home = ({ children }) => {
               ? placeHolders[getIndex(textIndex)].fontSize.md
               : placeHolders[getIndex(textIndex)].fontSize.sm
           }
-          opacity={top.to([0, size.height / 2], [1, 0])}
+          opacity={top.to([0, size.height / 2.5], [1, 0])}
           position={top.to((top) => [0, -1 + top / 200, 0])}
         >
           {placeHolders[getIndex(textIndex)].text}
         </Text>
       </Canvas>
-      <Box key={0} minH={"100vh"}></Box>
-      <About
-        key={1}
-        // innerRef={aboutRef}
-        mt={{ base: 3, md: 0 }}
-      />
-      <Skills
-      // innerRef={skillsRef}
-      ></Skills>
-      <Work
-        key={2}
-        // innerRef={worksRef}
-      />
-      <Testimonials
-        // innerRef={testRef}
-        key={3}
-        mt={{ base: 3, md: 0 }}
-      />
-      <ContactFormWithSocialButtons innerRef={contactRef} key={4} mt={4} />
+      <Box minH={"100vh"}></Box>
+      <About innerRef={aboutRef} mt={{ base: 3, md: 0 }} />
+      <Skills innerRef={skillsRef}></Skills>
+      <Work innerRef={worksRef} />
+      <Testimonials innerRef={testRef} mt={{ base: 3, md: 0 }} />
+      <ContactFormWithSocialButtons innerRef={contactRef} mt={4} />
     </div>
   );
 };

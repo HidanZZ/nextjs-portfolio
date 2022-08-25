@@ -3,7 +3,6 @@ import { Box } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
-import ThreeDotsWave from "../ThreeDotsWave";
 const Main = (props) => {
   const variants = {
     visible: { opacity: 1 },
