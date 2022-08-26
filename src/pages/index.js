@@ -37,7 +37,6 @@ const Home = ({ children }) => {
     }
   });
   Emitter.on("scrollToWorks", () => {
-    console.log("scroll to works");
     if (worksRef.current) {
       worksRef.current.scrollIntoView({ behavior: "smooth" });
     }
@@ -100,8 +99,8 @@ const Home = ({ children }) => {
         <Background
           // color={"#191919"}
           color={top.to(
-            [0, size.height * 2, size.height * 4],
-            ["#191919", "#00484B", "#3A001E"]
+            [0, size.height * 2, size.height * 5],
+            ["#191919", "#00484B", "#00AAB7"]
             // ['#27282F', '#247BA0', '#70C1B3', '#f8f3f1']
           )}
         />
@@ -166,7 +165,6 @@ function Text({
   } = useThree();
   const scale = viewportWidth > viewportHeight ? viewportWidth : viewportHeight;
   const canvas = useMemo(() => {
-    console.log(fontSize);
     const canvas = document.createElement("canvas");
     canvas.width = canvas.height = 2048;
     const context = canvas.getContext("2d");

@@ -7,7 +7,6 @@ export const Glitch = forwardRef(
   ({ perturbationMap = null, onFinish = null, mode = 0 }, ref) => {
     const effect = useMemo(() => {
       let new_mode = mode > 0.5 ? GlitchMode.DISABLED : GlitchMode.SPORADIC;
-      console.log("mode", mode);
 
       return new GlitchEffect({
         perturbationMap: perturbationMap,

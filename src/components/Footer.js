@@ -45,7 +45,7 @@ export default function Footer() {
         justify={{ base: "center", md: "space-between" }}
         align={{ base: "center", md: "center" }}
       >
-        <Text>© 2022 HIDANZ. All rights reserved</Text>
+        <Text color={"black"}>© 2022 HIDANZ. All rights reserved</Text>
       </Container>
     </Box>
   );

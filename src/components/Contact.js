@@ -17,6 +17,7 @@ import {
   useColorModeValue,
   VStack,
   chakra,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Fiverr } from "@styled-icons/simple-icons";
@@ -26,13 +27,66 @@ import { MdEmail, MdOutlineEmail } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
 
 export default function ContactFormWithSocialButtons(props) {
-  const { hasCopied, onCopy } = useClipboard("example@example.com");
+  const { hasCopied, onCopy } = useClipboard("hidanzaitdaoud@gmail.com");
   const [socialRef, inViewSocial] = useInView({
     threshold: 0.1,
   });
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [isnameInvalid, setIsnameInvalid] = useState(false);
+  const [isemailInvalid, setIsemailInvalid] = useState(false);
+  const [ismessageInvalid, setIsmessageInvalid] = useState(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Sending");
+
+    let data = {
+      name,
+      email,
+      message,
+    };
+
+    //validate fields
+    if (name === "") {
+      setIsnameInvalid(true);
+    } else {
+      setIsnameInvalid(false);
+    }
+    if (email === "") {
+      setIsemailInvalid(true);
+    } else if (!isValidEmail(email)) {
+      setIsemailInvalid(true);
+    } else {
+      setIsemailInvalid(false);
+    }
+    if (message === "") {
+      setIsmessageInvalid(true);
+    } else {
+      setIsmessageInvalid(false);
+    }
+    if (name !== "" && email !== "" && message !== "") {
+      setIsnameInvalid(false);
+      setIsemailInvalid(false);
+      setIsmessageInvalid(false);
+      fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then((res) => {
+        console.log("Response received");
+        if (res.status === 200) {
+          console.log("Response succeeded!");
+          setName("");
+          setEmail("");
+          setMessage("");
+        }
+      });
+    }
+  };
   return (
     <Flex
       {...props}
@@ -114,7 +168,7 @@ export default function ContactFormWithSocialButtons(props) {
 
                 <Link href="#">
                   <IconButton
-                    aria-label="twitter"
+                    aria-label="fiverr"
                     variant="ghost"
                     size="lg"
                     icon={<Fiverr size={28} />}
@@ -142,23 +196,14 @@ export default function ContactFormWithSocialButtons(props) {
               </Stack>
 
               <Box
-                bg={"transparent"}
+                bg={"gray.700"}
                 borderRadius="lg"
                 p={{ base: 6, md: 8 }}
                 color={useColorModeValue("gray.700", "whiteAlpha.900")}
                 shadow="base"
               >
                 <VStack spacing={{ base: 2, md: 5 }}>
-                  <FormControl
-                    isInvalid={() => {
-                      if (name.length < 1) {
-                        return true;
-                      } else {
-                        return false;
-                      }
-                    }}
-                    isRequired
-                  >
+                  <FormControl isInvalid={isnameInvalid} isRequired>
                     <FormLabel>Name</FormLabel>
 
                     <InputGroup>
@@ -171,21 +216,10 @@ export default function ContactFormWithSocialButtons(props) {
                         onChange={(e) => setName(e.target.value)}
                       />
                     </InputGroup>
+                    <FormErrorMessage>Name invalid</FormErrorMessage>
                   </FormControl>
 
-                  <FormControl
-                    isInvalid={() => {
-                      //validate email
-                      if (email.length < 1) {
-                        return true;
-                      } else if (isValidEmail(email)) {
-                        return true;
-                      } else {
-                        return false;
-                      }
-                    }}
-                    isRequired
-                  >
+                  <FormControl isInvalid={isemailInvalid} isRequired>
                     <FormLabel>Email</FormLabel>
 
                     <InputGroup>
@@ -198,18 +232,11 @@ export default function ContactFormWithSocialButtons(props) {
                         placeholder="Your Email"
                       />
                     </InputGroup>
+
+                    <FormErrorMessage>Email invalid</FormErrorMessage>
                   </FormControl>
 
-                  <FormControl
-                    isInvalid={() => {
-                      if (message.length < 100) {
-                        return true;
-                      } else {
-                        return false;
-                      }
-                    }}
-                    isRequired
-                  >
+                  <FormControl isInvalid={ismessageInvalid} isRequired>
                     <FormLabel>Message</FormLabel>
 
                     <Textarea
@@ -220,9 +247,11 @@ export default function ContactFormWithSocialButtons(props) {
                       rows={6}
                       resize="none"
                     />
+                    <FormErrorMessage>Message invalid</FormErrorMessage>
                   </FormControl>
 
                   <Button
+                    onClick={handleSubmit}
                     colorScheme="blue"
                     bg="blue.400"
                     color="white"

@@ -145,7 +145,6 @@ const About = (props) => {
             md: "xl",
           }}
           fontWeight={300}
-          // fontWeight="thin"
           letterSpacing="wider"
           color={"lightbeige"}
         >
@@ -156,10 +155,9 @@ const About = (props) => {
           development.
           <br />
           <br />I develop websites using MERN stack. I have skills in using
-          design softwares like Figma; with prototype tools like Framer and
-          Protopie. Being a diligent, hardworking and result oriented lady, I
-          always work towards achieving best result on each project I lay my
-          hands on.
+          design softwares like Figma. Being a diligent, hardworking and result
+          oriented man, I always work towards achieving best result on each
+          project I lay my hands on.
         </chakra.p>
       </Flex>
       <Flex

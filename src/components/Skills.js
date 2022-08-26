@@ -94,13 +94,13 @@ function Grid({ delayPerPixel = 0.0016 }) {
   useEffect(() => {
     let temp = [];
     for (const key in iconsWithNames) {
-      console.log(key);
       getDominantColor(iconsWithNames[key].icon)
         .then((color) => {
           temp.push({
             name: iconsWithNames[key].name,
             color,
             icon: iconsWithNames[key].icon,
+            url: iconsWithNames[key].url,
           });
         })
         .catch((err) => {});
@@ -131,6 +131,7 @@ function Grid({ delayPerPixel = 0.0016 }) {
             title={skill.name}
             key={i}
             i={i}
+            url={skill.url}
             originIndex={0}
             delayPerPixel={delayPerPixel}
             originOffset={originOffset}
@@ -146,6 +147,7 @@ function Grid({ delayPerPixel = 0.0016 }) {
 function GridItem({
   icon,
   color,
+  url,
   title,
   delayPerPixel,
   i,
@@ -183,7 +185,8 @@ function GridItem({
     <Box
       cursor={"pointer"}
       as={motion.a}
-      href={`https://www.google.com/search?q=${title}`}
+      href={url}
+      target="_blank"
       m={"10px"}
       initial={{ scale: 1 }}
       onHoverStart={() => {

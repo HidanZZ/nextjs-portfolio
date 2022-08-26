@@ -15,10 +15,10 @@ export default function (req, res) {
   });
   const { name, email, message } = req.body;
   const mailOptions = {
-    from: `${name} <${email}>`,
+    from: `${name}`,
     to: user,
     subject: "New message from portfolio",
-    text: message,
+    text: `from ${name} at ${email} says: \n ${message}`,
   };
   transporter.sendMail(mailOptions, (err, info) => {
     if (err) {
