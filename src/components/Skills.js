@@ -89,25 +89,6 @@ function Grid({ delayPerPixel = 0.0016 }) {
   const [ref, inView] = useInView({
     threshold: 0.1,
   });
-  const [skills, setSkills] = useState([]);
-  const [loaded, setLoaded] = useState(false);
-  useEffect(() => {
-    let temp = [];
-    for (const key in iconsWithNames) {
-      getDominantColor(iconsWithNames[key].icon)
-        .then((color) => {
-          temp.push({
-            name: iconsWithNames[key].name,
-            color,
-            icon: iconsWithNames[key].icon,
-            url: iconsWithNames[key].url,
-          });
-        })
-        .catch((err) => {});
-    }
-    setSkills(temp);
-    setLoaded(true);
-  }, []);
 
   return (
     <Box
@@ -123,30 +104,24 @@ function Grid({ delayPerPixel = 0.0016 }) {
       animate={inView ? "visible" : "hidden"}
       variants={{}}
     >
-      {loaded ? (
-        skills.map((skill, i) => (
-          <GridItem
-            icon={skill.icon}
-            color={skill.color}
-            title={skill.name}
-            key={i}
-            i={i}
-            url={skill.url}
-            originIndex={0}
-            delayPerPixel={delayPerPixel}
-            originOffset={originOffset}
-          />
-        ))
-      ) : (
-        <></>
-      )}
+      {Object.entries(iconsWithNames).map(([key, value], i) => (
+        <GridItem
+          icon={value.icon}
+          title={value.name}
+          key={i}
+          i={i}
+          url={value.url}
+          originIndex={0}
+          delayPerPixel={delayPerPixel}
+          originOffset={originOffset}
+        />
+      ))}
     </Box>
   );
 }
 
 function GridItem({
   icon,
-  color,
   url,
   title,
   delayPerPixel,
@@ -244,7 +219,7 @@ function GridItem({
 const itemVariants = {
   hidden: {
     opacity: 0,
-    scale: 0.5,
+    scale: 1,
   },
   visible: (delayRef) => ({
     opacity: 1,

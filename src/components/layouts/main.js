@@ -23,7 +23,7 @@ const Main = (props) => {
         <Box w="full" maxW="100vw">
           {props.children}
         </Box>
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
       </motion.div>
     </Box>
   );

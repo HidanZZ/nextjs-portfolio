@@ -29,51 +29,59 @@ import Flag from "react-world-flags";
 const pages = [
   {
     quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
-    name: "lol",
-    country: "nor",
+      "Hidanz was responsive and helpful. The job was completed on time and exactly as I had specified. I will work with this seller again!",
+    name: "benruane",
+    country: "aus",
     stars: 5,
-    url: "https://www.google.com",
+    url: "https://www.fiverr.com/benruane",
   },
   {
     quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
-    name: "lol",
-    country: "nor",
+      "Very strait forward seller, highly skilled and no-nonsense communication from him. I just described what the job was, he perfectly understood and delivered on time. He also performed all the revisions I requested very fast. Thanks Hidanz for a job well done.",
+    name: "alexsporos",
+    country: "gr",
     stars: 5,
-    url: "https://www.google.com",
+    url: "https://www.fiverr.com/alexsporos",
   },
   {
     quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
-    name: "lol",
-    country: "nor",
+      "Super dedicated to getting it just right, and helped out with some minor bug on our site to help execute our project. Great service.",
+    name: "gcdbreeze",
+    country: "gb",
     stars: 5,
-    url: "https://www.google.com",
+    url: "https://www.fiverr.com/gcdbreeze",
   },
   {
     quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
-    name: "lol",
-    country: "nor",
+      "Wonderful to work with and very easy to communicate with. Highly recommended!",
+    name: "kougatheween",
+    country: "usa",
     stars: 5,
-    url: "https://www.google.com",
+    url: "https://www.fiverr.com/kougatheween",
   },
   {
     quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
-    name: "lol",
-    country: "nor",
+      "Hidanz really a good talent in game development. This is my first time working on this and I'm very lucky to meet him. He's very patient, good communicator and completed every task I asked. I will come back for more and keep working with him in future. Highly recommend",
+    name: "kaitlam14",
+    country: "vn",
     stars: 5,
-    url: "https://www.google.com",
+    url: "https://www.fiverr.com/kaitlam14",
   },
   {
     quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.",
-    name: "lol",
-    country: "nor",
+      "Really enjoyed woking with hidanz. He made himself available and resolved any issues as soon as I mentioned them! He's a very inventive and intelligent programmer. Highly recommended :)",
+    name: "hmax2017",
+    country: "usa",
     stars: 5,
-    url: "https://www.google.com",
+    url: "https://www.fiverr.com/kaitlam14",
+  },
+  {
+    quote:
+      "Hidanz is very skilled and fun to work with! I am very happy with the code and communication is great. I had a small broken javascript game and he totally transformed and upgraded it. I will be working with him again.",
+    name: "electricarchaic",
+    country: "usa",
+    stars: 5,
+    url: "https://www.fiverr.com/electricarchaic",
   },
 ];
 
@@ -277,7 +285,7 @@ function Slides({ currentPage, setPage, direction, hasPaginated }) {
       }
       transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
       w={{ base: "90vw", sm: "70vw", md: "50vw" }}
-      h={"250px"}
+      h={"300px"}
     >
       <AnimatePresence
         // Disable entry animations when AnimatePresence mounts, but allow

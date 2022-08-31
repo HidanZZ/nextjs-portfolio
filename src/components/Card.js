@@ -30,6 +30,7 @@ const Card = ({
   borderBottomColor = "#C84B31",
   madeWith,
   bgPhoto,
+  links,
   tag,
   tagColor = "#C84B31",
   tagBg = "#C84B31",
@@ -103,18 +104,20 @@ const Card = ({
                 hasArrow
                 placement="bottom"
               >
-                <chakra.span
+                <chakra.a
                   width="80px"
                   height="80px"
                   cursor={"pointer"}
+                  href={links.website}
                   bg={hexToRgba("#C84B31", 1)}
                   borderRadius={"50%"}
+                  target="_blank"
                   display={"flex"}
                   justifyContent={"center"}
                   alignItems={"center"}
                 >
                   <EyeFill fill={"white"} size={50} />
-                </chakra.span>
+                </chakra.a>
               </Tooltip>
 
               <Tooltip
@@ -125,10 +128,12 @@ const Card = ({
                 hasArrow
                 placement="bottom"
               >
-                <chakra.span
+                <chakra.a
                   cursor={"pointer"}
+                  href={links.github}
                   width="80px"
                   height="80px"
+                  target="_blank"
                   bg={hexToRgba("#C84B31", 1)}
                   borderRadius={"50%"}
                   display={"flex"}
@@ -136,7 +141,7 @@ const Card = ({
                   alignItems={"center"}
                 >
                   <Github fill={"white"} size={50} />
-                </chakra.span>
+                </chakra.a>
               </Tooltip>
             </chakra.div>
           </chakra.div>

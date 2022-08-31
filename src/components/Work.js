@@ -50,70 +50,74 @@ const Work = (props) => {
   const data = {
     Games: [
       {
-        title: "test",
+        title: "Pixel Farm",
         category: "game",
         categoryIndex: 1,
-        image:
-          "https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-social.png",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
-        madeWith: ["phaser", "nodeJS"],
-      },
-      {
-        title: "test",
-        category: "game",
-        categoryIndex: 1,
-        image:
-          "https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-social.png",
+        image: "projects/pixelfarm.png",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
         madeWith: ["godot"],
+        links: {
+          github: "https://github.com/HidanZZ/Farming-game",
+          website: "https://hidanzz.github.io/Farming-game",
+        },
       },
       {
-        title: "test",
+        title: "Space Orbit",
         category: "game",
         categoryIndex: 1,
-        image:
-          "https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-social.png",
+        image: "projects/spaceorbit.png",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
-        madeWith: ["godot", "nodeJS"],
+        madeWith: ["godot"],
+        links: {
+          github: "https://github.com/HidanZZ/space-orbit-godot",
+          website: "https://hidanzz.github.io/space-orbit-godot",
+        },
+      },
+      {
+        title: "Visual Novel",
+        category: "game",
+        categoryIndex: 1,
+        image: "projects/visualnovel.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["godot"],
+        links: {
+          github: "https://github.com/HidanZZ/visual-novel",
+          website: "#",
+        },
       },
     ],
     Apps: [
       {
+        title: "Finance App",
+        category: "app",
+        categoryIndex: 1,
+        image: "projects/finance.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["flutter"],
+        links: {
+          github: "https://github.com/HidanZZ/finance-ui-app",
+          website: "#",
+        },
+      },
+      {
         title: "AdZone",
         category: "app",
-        categoryIndex: 2,
-        image:
-          "https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-social.png",
+        categoryIndex: 1,
+        image: "projects/adzone.png",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
         madeWith: ["flutter", "nodeJS"],
+        links: {
+          github: "https://github.com/ramadanhamza/AdZone-front",
+          website: "#",
+        },
       },
     ],
-    Web: [
-      {
-        title: "test",
-        category: "web",
-        categoryIndex: 3,
-        image:
-          "https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-social.png",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
-        madeWith: ["react", "nodeJS"],
-      },
-      {
-        title: "test",
-        category: "web",
-        categoryIndex: 3,
-        image:
-          "https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-social.png",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
-        madeWith: ["react", "nodeJS", "nextJS"],
-      },
-    ],
+    Web: [],
   };
   data.All = data.Games.concat(data.Apps, data.Web);
   const tabContentVariant = {
@@ -264,7 +268,8 @@ const Work = (props) => {
                     subtitle={item.description}
                     tag={item.category}
                     madeWith={item.madeWith}
-                    bgPhoto={`https://source.unsplash.com/random/?nature&${i}`}
+                    bgPhoto={item.image}
+                    links={item.links}
                   ></Card>
                 </chakra.span>
               ))}
