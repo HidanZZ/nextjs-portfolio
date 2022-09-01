@@ -85,7 +85,6 @@ const Work = (props) => {
         madeWith: ["godot"],
         links: {
           github: "https://github.com/HidanZZ/visual-novel",
-          website: "#",
         },
       },
       {
@@ -249,7 +248,6 @@ const Work = (props) => {
         madeWith: ["flutter"],
         links: {
           github: "https://github.com/HidanZZ/finance-ui-app",
-          website: "#",
         },
       },
       {
@@ -259,10 +257,9 @@ const Work = (props) => {
         image: "projects/adzone.png",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
-        madeWith: ["flutter", "nodeJS"],
+        madeWith: ["flutter", "nodeJS", "express"],
         links: {
           github: "https://github.com/ramadanhamza/AdZone-front",
-          website: "#",
         },
       },
     ],

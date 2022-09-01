@@ -153,7 +153,7 @@ export default function ContactFormWithSocialButtons(props) {
                   />
                 </Tooltip>
 
-                <Link href="#">
+                <Link target={"_blank"} href="https://github.com/HidanZZ">
                   <IconButton
                     aria-label="github"
                     variant="ghost"
@@ -168,7 +168,7 @@ export default function ContactFormWithSocialButtons(props) {
                   />
                 </Link>
 
-                <Link href="#">
+                <Link target={"_blank"} href="https://www.fiverr.com/hidanz">
                   <IconButton
                     aria-label="fiverr"
                     variant="ghost"
@@ -182,7 +182,10 @@ export default function ContactFormWithSocialButtons(props) {
                   />
                 </Link>
 
-                <Link href="#">
+                <Link
+                  target={"_blank"}
+                  href="linkedin.com/in/houssein-aitdaoud/"
+                >
                   <IconButton
                     aria-label="linkedin"
                     variant="ghost"

@@ -96,29 +96,31 @@ const Card = ({
               color={"white"}
               p={2}
             >
-              <Tooltip
-                bg={"black"}
-                color={"white"}
-                borderRadius={"8px"}
-                label="Project Link"
-                hasArrow
-                placement="bottom"
-              >
-                <chakra.a
-                  width="80px"
-                  height="80px"
-                  cursor={"pointer"}
-                  href={links.website}
-                  bg={hexToRgba("#C84B31", 1)}
-                  borderRadius={"50%"}
-                  target="_blank"
-                  display={"flex"}
-                  justifyContent={"center"}
-                  alignItems={"center"}
+              {links.website && (
+                <Tooltip
+                  bg={"black"}
+                  color={"white"}
+                  borderRadius={"8px"}
+                  label="Project Link"
+                  hasArrow
+                  placement="bottom"
                 >
-                  <EyeFill fill={"white"} size={50} />
-                </chakra.a>
-              </Tooltip>
+                  <chakra.a
+                    width="80px"
+                    height="80px"
+                    cursor={"pointer"}
+                    href={links.website}
+                    bg={hexToRgba("#C84B31", 1)}
+                    borderRadius={"50%"}
+                    target="_blank"
+                    display={"flex"}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                  >
+                    <EyeFill fill={"white"} size={50} />
+                  </chakra.a>
+                </Tooltip>
+              )}
 
               <Tooltip
                 bg={"black"}
@@ -153,7 +155,8 @@ const Card = ({
           left={"0"}
           borderTopRadius={"8px"}
           onClick={() => {
-            console.log("clicked");
+            //open link in new tab
+            window.open(links.website ? links.website : links.github, "_blank");
           }}
           width={"100%"}
           height={"100%"}
