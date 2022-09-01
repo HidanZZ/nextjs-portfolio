@@ -369,7 +369,7 @@ function Slides({ currentPage, setPage, direction, hasPaginated }) {
                 code={pages[currentPage].country}
                 width="18px"
               />
-              <Text cursor={"pointer"} mx={2} fontWeight={500}>
+              <Text cursor={"pointer"} mx={2} fontWeight={"bold"}>
                 <a href={pages[currentPage].url}>
                   {pages[currentPage].name} (Fiverr)
                 </a>

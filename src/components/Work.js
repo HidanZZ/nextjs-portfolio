@@ -88,6 +88,155 @@ const Work = (props) => {
           website: "#",
         },
       },
+      {
+        title: "2048",
+        category: "game",
+        categoryIndex: 1,
+        image: "projects/2048.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["javascript"],
+        links: {
+          github: "https://github.com/HidanZZ/nextjs-portfolio/tree/2048",
+          website: "https://lucky-kataifi-02f63d.netlify.app",
+        },
+      },
+      {
+        title: "Balloon Crush",
+        category: "game",
+        categoryIndex: 1,
+        image: "projects/balloncrush.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["javascript"],
+        links: {
+          github:
+            "https://github.com/HidanZZ/nextjs-portfolio/tree/balloon-crush",
+          website: "https://balloon-crush--lucky-kataifi-02f63d.netlify.app",
+        },
+      },
+      {
+        title: "Basketball",
+        category: "game",
+        categoryIndex: 1,
+        image: "projects/basketthrower.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["javascript"],
+        links: {
+          github:
+            "https://github.com/HidanZZ/nextjs-portfolio/tree/basket-thrower",
+          website: "https://basket-thrower--lucky-kataifi-02f63d.netlify.app",
+        },
+      },
+      {
+        title: "Boxing Arcade",
+        category: "game",
+        categoryIndex: 1,
+        image: "projects/boxing.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["javascript"],
+        links: {
+          github:
+            "https://github.com/HidanZZ/nextjs-portfolio/tree/boxing-arcade",
+          website: "https://boxing-arcade--lucky-kataifi-02f63d.netlify.app",
+        },
+      },
+      {
+        title: "Candy Land",
+        category: "game",
+        categoryIndex: 1,
+        image: "projects/candyland.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["javascript"],
+        links: {
+          github: "https://github.com/HidanZZ/nextjs-portfolio/tree/Candy-Land",
+          website: "https://candy-land--lucky-kataifi-02f63d.netlify.app",
+        },
+      },
+      {
+        title: "Color game",
+        category: "game",
+        categoryIndex: 1,
+        image: "projects/colorgame.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["javascript"],
+        links: {
+          github: "https://github.com/HidanZZ/nextjs-portfolio/tree/color-game",
+          website: "https://color-game--lucky-kataifi-02f63d.netlify.app",
+        },
+      },
+      {
+        title: "Egg Toss",
+        category: "game",
+        categoryIndex: 1,
+        image: "projects/eggtoss.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["javascript"],
+        links: {
+          github: "https://github.com/HidanZZ/nextjs-portfolio/tree/egg-toss",
+          website: "https://egg-toss--lucky-kataifi-02f63d.netlify.app",
+        },
+      },
+      {
+        title: "Escape room",
+        category: "game",
+        categoryIndex: 1,
+        image: "projects/escaperoom.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["javascript"],
+        links: {
+          github:
+            "https://github.com/HidanZZ/nextjs-portfolio/tree/Escape-Room",
+          website: "https://escape-room--lucky-kataifi-02f63d.netlify.app",
+        },
+      },
+      {
+        title: "Gold nuggets",
+        category: "game",
+        categoryIndex: 1,
+        image: "projects/goldnuggetas.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["javascript"],
+        links: {
+          github:
+            "https://github.com/HidanZZ/nextjs-portfolio/tree/GoldNuggets",
+          website: "https://goldnuggets--lucky-kataifi-02f63d.netlify.app",
+        },
+      },
+      {
+        title: "Jumping Bunny",
+        category: "game",
+        categoryIndex: 1,
+        image: "projects/jumpingbunny.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["javascript"],
+        links: {
+          github:
+            "https://github.com/HidanZZ/nextjs-portfolio/tree/jumping-bunny",
+          website: "https://jumping-bunny--lucky-kataifi-02f63d.netlify.app",
+        },
+      },
+      {
+        title: "Timberjack",
+        category: "game",
+        categoryIndex: 1,
+        image: "projects/timberjack.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["javascript"],
+        links: {
+          github: "https://github.com/HidanZZ/nextjs-portfolio/tree/Timberjack",
+          website: "https://timberjack--lucky-kataifi-02f63d.netlify.app",
+        },
+      },
     ],
     Apps: [
       {

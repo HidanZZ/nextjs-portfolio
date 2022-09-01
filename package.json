@@ -21,6 +21,7 @@
     "@react-three/fiber": "^8.5.1",
     "@react-three/postprocessing": "^2.6.2",
     "@rive-app/react-canvas": "^3.0.18",
+    "detect-gpu": "^4.0.37",
     "devicon-react-svg": "^0.2.3",
     "dotenv": "^16.0.1",
     "eventemitter3": "^4.0.7",

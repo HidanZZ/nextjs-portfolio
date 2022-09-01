@@ -99,6 +99,7 @@ export default function ContactFormWithSocialButtons(props) {
     >
       <Box
         borderRadius="lg"
+        width={"100%"}
         m={{ base: 5, md: 16, lg: 10 }}
         mt={{ base: 24, md: 0 }}
         p={{ base: 5, lg: 16 }}
@@ -118,6 +119,7 @@ export default function ContactFormWithSocialButtons(props) {
             <Stack
               spacing={{ base: 2, sm: 4, md: 8, lg: 20 }}
               direction={{ base: "column", md: "row" }}
+              width={{ base: "100%", md: "70%", lg: "50%" }}
             >
               <Stack
                 ref={socialRef}
@@ -201,6 +203,7 @@ export default function ContactFormWithSocialButtons(props) {
                 p={{ base: 6, md: 8 }}
                 color={useColorModeValue("gray.700", "whiteAlpha.900")}
                 shadow="base"
+                width={"100%"}
               >
                 <VStack spacing={{ base: 2, md: 5 }}>
                   <FormControl isInvalid={isnameInvalid} isRequired>

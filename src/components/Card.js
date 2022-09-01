@@ -147,6 +147,19 @@ const Card = ({
           </chakra.div>
         </chakra.div>
         <chakra.div
+          pos={"absolute"}
+          bottom={"0"}
+          zIndex={"9"}
+          left={"0"}
+          borderTopRadius={"8px"}
+          onClick={() => {
+            console.log("clicked");
+          }}
+          width={"100%"}
+          height={"100%"}
+          bg={"transparent"}
+        ></chakra.div>
+        <chakra.div
           display={"flex"}
           justifyContent={"space-between"}
           alignItems={"center"}

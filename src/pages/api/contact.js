@@ -14,6 +14,7 @@ export default function (req, res) {
     },
   });
   const { name, email, message } = req.body;
+  console.log("here in contact api");
   const mailOptions = {
     from: `${name}`,
     to: user,
