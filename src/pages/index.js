@@ -250,7 +250,8 @@ function Stars({ position, tier }) {
       color: "white",
       transparent: true,
     });
-    const coords = new Array(tier * 1000)
+    console.log("tier", tier);
+    const coords = new Array(tier * 500 + (tier - 1) * 500)
       .fill()
       .map((i) => [
         2000 * Math.random() - 1000,
