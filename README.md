@@ -1,1 +1,1 @@
-#  chains app landing page
+#  chains-app landing page
