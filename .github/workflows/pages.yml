@@ -73,6 +73,12 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: npm ci
+      - name: Create env file
+        run: |
+          touch .env
+          echo GMAIL_USER=${{ secrets.USER }} >> .env
+          echo GMAIL_PASSWORD=${{ secrets.PASSWORD }} >> .env
+          cat .env
       - name: Build with Next.js
         run: npm run build
       - name: Static HTML export with Next.js
