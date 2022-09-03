@@ -122,29 +122,31 @@ const Card = ({
                 </Tooltip>
               )}
 
-              <Tooltip
-                bg={"black"}
-                color={"white"}
-                borderRadius={"8px"}
-                label="View on Github"
-                hasArrow
-                placement="bottom"
-              >
-                <chakra.a
-                  cursor={"pointer"}
-                  href={links.github}
-                  width="80px"
-                  height="80px"
-                  target="_blank"
-                  bg={hexToRgba("#C84B31", 1)}
-                  borderRadius={"50%"}
-                  display={"flex"}
-                  justifyContent={"center"}
-                  alignItems={"center"}
+              {links.github && (
+                <Tooltip
+                  bg={"black"}
+                  color={"white"}
+                  borderRadius={"8px"}
+                  label="View on Github"
+                  hasArrow
+                  placement="bottom"
                 >
-                  <Github fill={"white"} size={50} />
-                </chakra.a>
-              </Tooltip>
+                  <chakra.a
+                    cursor={"pointer"}
+                    href={links.github}
+                    width="80px"
+                    height="80px"
+                    target="_blank"
+                    bg={hexToRgba("#C84B31", 1)}
+                    borderRadius={"50%"}
+                    display={"flex"}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                  >
+                    <Github fill={"white"} size={50} />
+                  </chakra.a>
+                </Tooltip>
+              )}
             </chakra.div>
           </chakra.div>
         </chakra.div>

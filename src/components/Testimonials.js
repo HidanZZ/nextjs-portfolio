@@ -85,7 +85,7 @@ const pages = [
   },
 ];
 
-export default function Testimonials(props) {
+export default function Testimonials({ innerRef, mt }) {
   /*
    * We keep track of the pagination direction as well as current page, this way we
    * can dynamically generate different animations depending on the direction of travel
@@ -125,8 +125,8 @@ export default function Testimonials(props) {
       flexDirection={"column"}
       justifyContent={"center"}
       p={10}
-      ref={props.innerRef}
-      {...props}
+      ref={innerRef}
+      mt={mt}
       minH="100vh"
       w="full"
       bg="black"
@@ -284,7 +284,7 @@ function Slides({ currentPage, setPage, direction, hasPaginated }) {
           : { opacity: 0, y: -100, scale: 0.5 }
       }
       transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
-      w={{ base: "90vw", sm: "70vw", md: "50vw" }}
+      w={{ base: "90vw", sm: "70vw", md: "60vw", lg: "50vw" }}
       h={"300px"}
     >
       <AnimatePresence

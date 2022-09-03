@@ -1,24 +1,9 @@
-import {
-  Box,
-  Stack,
-  Flex,
-  chakra,
-  Image,
-  Text,
-  Button,
-  Container,
-  HStack,
-  IconButton,
-} from "@chakra-ui/react";
-import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
-import { range } from "lodash-es";
+import { Box, Flex, chakra } from "@chakra-ui/react";
+import { motion, AnimatePresence } from "framer-motion";
 import Card from "./Card";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useInView } from "react-intersection-observer";
-import DevIcon from "devicon-react-svg";
-import icons from "../utils/icons";
-import { DeleteIcon, ExternalLinkIcon } from "@chakra-ui/icons";
-const Work = (props) => {
+const Work = ({ innerRef }) => {
   const [ref, inView] = useInView({
     threshold: 0,
   });
@@ -262,8 +247,93 @@ const Work = (props) => {
           github: "https://github.com/ramadanhamza/AdZone-front",
         },
       },
+      {
+        title: "Alertini",
+        category: "app",
+        categoryIndex: 1,
+        image: "projects/alertini.jpg",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["react"],
+        links: {
+          github: "https://github.com/HidanZZ/nextjs-portfolio/tree/Alertini",
+        },
+      },
+      {
+        title: "Quick Math",
+        category: "app",
+        categoryIndex: 1,
+        image: "projects/quickmath.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["react"],
+        links: {
+          github: "https://github.com/HidanZZ/nextjs-portfolio/tree/QuickMath",
+        },
+      },
     ],
-    Web: [],
+    Web: [
+      {
+        title: "Circuit lab app",
+        category: "web",
+        categoryIndex: 1,
+        image: "projects/circuitlab.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["react"],
+        links: {
+          website: "https://circuit-lab--lucky-kataifi-02f63d.netlify.app",
+        },
+      },
+      {
+        title: "Chains Chart landing page",
+        category: "web",
+        categoryIndex: 1,
+        image: "projects/chainschartlanding.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["react"],
+        links: {
+          website: "https://chains-chart--lucky-kataifi-02f63d.netlify.app",
+        },
+      },
+      {
+        title: "Crypto landing page",
+        category: "web",
+        categoryIndex: 1,
+        image: "projects/cryptolanding2.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["html", "css"],
+        links: {
+          website: "https://stupendous-sfogliatella-9b9fd3.netlify.app",
+        },
+      },
+      {
+        title: "Startup landing ",
+        category: "web",
+        categoryIndex: 1,
+        image: "projects/cryptolanding1.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["react", "nextJS"],
+        links: {
+          website: "https://startup-landing-five.vercel.app",
+        },
+      },
+      {
+        title: "Chains chart app",
+        category: "web",
+        categoryIndex: 1,
+        image: "projects/chainschartapp.png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        madeWith: ["react", "nodeJS"],
+        links: {
+          website: "https://chains-chart-app--lucky-kataifi-02f63d.netlify.app",
+        },
+      },
+    ],
   };
   data.All = data.Games.concat(data.Apps, data.Web);
   const tabContentVariant = {
@@ -277,12 +347,10 @@ const Work = (props) => {
       display: "none",
     },
   };
-  // console.log("data", data[screens[selected].title]);
   return (
     <Box
       backgroundColor={"black"}
-      {...props}
-      ref={props.innerRef}
+      ref={innerRef}
       as={motion.div}
       minH="105vh"
       w="full"

@@ -6,7 +6,9 @@ import Typewriter from "typewriter-effect";
 import { range } from "lodash-es";
 import { wrap } from "popmotion";
 import ImageCard from "./ImageCard";
-const About = (props) => {
+import Lottie from "lottie-react";
+import animationData from "../animations/development.json";
+const About = ({ innerRef, mt }) => {
   const [ref, inView] = useInView({
     threshold: 0,
   });
@@ -65,8 +67,8 @@ const About = (props) => {
 
   return (
     <Stack
-      ref={props.innerRef}
-      {...props}
+      ref={innerRef}
+      mt={mt}
       minH="100vh"
       w="full"
       backgroundColor={"black"}
@@ -164,8 +166,23 @@ const About = (props) => {
         justify={"center"}
         alignItems={"center"}
         minWidth={{ base: "full", lg: "50%" }}
+        display={{ base: "none", lg: "flex" }}
       >
         <Box
+          display="flex"
+          width="60%"
+          height="60%"
+          // bg={"white"}
+          as={motion.div}
+          initial={{ opacity: 0, x: 50 }}
+          animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+          borderRadius="10%"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Lottie animationData={animationData} loop={true} />;
+        </Box>
+        {/* <Box
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -217,7 +234,7 @@ const About = (props) => {
               </Box>
             ))}
           </AnimatePresence>
-        </Box>
+        </Box> */}
       </Flex>
     </Stack>
   );

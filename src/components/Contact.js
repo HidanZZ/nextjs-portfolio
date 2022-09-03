@@ -26,7 +26,7 @@ import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from "react-icons/bs";
 import { MdEmail, MdOutlineEmail } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
 
-export default function ContactFormWithSocialButtons(props) {
+export default function ContactFormWithSocialButtons({ innerRef, mt }) {
   const { hasCopied, onCopy } = useClipboard("hidanzaitdaoud@gmail.com");
   const [socialRef, inViewSocial] = useInView({
     threshold: 0.1,
@@ -89,12 +89,12 @@ export default function ContactFormWithSocialButtons(props) {
   };
   return (
     <Flex
-      {...props}
       minH="100vh"
       minW={"100%"}
       align="center"
       justify="center"
-      ref={props.innerRef}
+      ref={innerRef}
+      mt={mt}
       backgroundColor="transparent"
     >
       <Box
@@ -259,10 +259,13 @@ export default function ContactFormWithSocialButtons(props) {
                   <Button
                     onClick={handleSubmit}
                     colorScheme="blue"
-                    bg="blue.400"
+                    py={6}
+                    width={"100%"}
+                    bg="orange"
                     color="white"
                     _hover={{
-                      bg: "blue.500",
+                      bg: "white",
+                      color: "orange",
                     }}
                   >
                     Send Message

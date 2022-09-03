@@ -1,5 +1,5 @@
 // import { useEffect, useState } from "react";
-import { Box, VStack } from "@chakra-ui/react";
+import { Box, VStack, chakra, Link, IconButton } from "@chakra-ui/react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Work from "../components/Work";
 import About from "../components/About";
@@ -15,6 +15,9 @@ import { withExtend, useSpring, a, to } from "@react-spring/three";
 import { useScroll } from "framer-motion";
 import { throttle } from "lodash-es";
 import { getGPUTier } from "detect-gpu";
+import { BsTelegram } from "react-icons/bs";
+import { Fiverr } from "@styled-icons/simple-icons";
+
 const Home = ({ children }) => {
   const skillsRef = useRef(null);
   const aboutRef = useRef(null);
@@ -92,13 +95,54 @@ const Home = ({ children }) => {
   }, []);
   return (
     tier > 0 && (
-      <div onClick={() => {}}>
+      <div style={{ position: "relative" }}>
+        <Box zIndex={9999} position={"fixed"} bottom={0} right={0}>
+          <VStack mb={{ base: 3, md: 6, lg: 8 }} mr={{ base: 2, md: 4, lg: 8 }}>
+            <chakra.span m={2}>
+              <Link target={"_blank"} href="https://t.me/hidanzz">
+                <IconButton
+                  aria-label="telegram"
+                  variant="ghost"
+                  size="lg"
+                  fontSize="3xl"
+                  bg="white"
+                  color="gray.700"
+                  icon={<BsTelegram />}
+                  _hover={{
+                    bg: "white",
+                    color: "orange",
+                  }}
+                  isRound
+                />
+              </Link>
+            </chakra.span>
+            <chakra.span>
+              <Link target={"_blank"} href="https://www.fiverr.com/hidanz">
+                <IconButton
+                  aria-label="fiverr"
+                  variant="ghost"
+                  size="lg"
+                  fontSize="2xl"
+                  p={2}
+                  bg="white"
+                  color="gray.700"
+                  icon={<Fiverr />}
+                  _hover={{
+                    bg: "white",
+                    color: "orange",
+                  }}
+                  isRound
+                />
+              </Link>
+            </chakra.span>
+          </VStack>
+        </Box>
         <Canvas style={{ position: "fixed", top: "0", left: "0" }}>
           <Background
             // color={"#191919"}
             color={top.to(
               [0, size.height * 2, size.height * 5],
-              ["#191919", "#00484B", "#005C7A"]
+              ["#191919", "#005B9F", "#191919"]
               // ['#27282F', '#247BA0', '#70C1B3', '#f8f3f1']
             )}
           />

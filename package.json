@@ -27,6 +27,7 @@
     "eventemitter3": "^4.0.7",
     "framer-motion": "^6.5.0",
     "lodash-es": "^4.17.21",
+    "lottie-react": "^2.3.1",
     "next": "^12.2.2",
     "node-vibrant": "^3.1.6",
     "nodemailer": "^6.7.8",

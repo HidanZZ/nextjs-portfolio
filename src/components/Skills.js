@@ -4,19 +4,19 @@ import { useInView } from "react-intersection-observer";
 import { useEffect, useRef, useState, useLayoutEffect } from "react";
 import Vibrant from "node-vibrant";
 import { iconsWithNames } from "../utils/icons";
-const Skills = (props) => {
+const Skills = ({ innerRef, mt }) => {
   const [titleRef, inViewTitle] = useInView({
     threshold: 0.1,
   });
   const [subtitleRef, inViewSub] = useInView({
-    threshold: 1,
+    threshold: 0,
   });
 
   return (
     <Box
       backgroundColor={"black"}
-      {...props}
-      ref={props.innerRef}
+      ref={innerRef}
+      mt={mt}
       as={motion.div}
       minH="100vh"
       w="full"
