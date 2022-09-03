@@ -40,7 +40,7 @@ const Work = ({ innerRef }) => {
         categoryIndex: 1,
         image: "projects/pixelfarm.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+          "Farming game where you can buy crops, grow them and sell them for money",
         madeWith: ["godot"],
         links: {
           github: "https://github.com/HidanZZ/Farming-game",
@@ -53,7 +53,7 @@ const Work = ({ innerRef }) => {
         categoryIndex: 1,
         image: "projects/spaceorbit.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+          "Don't let the asteroids hit you! Dodge them and collect the coins",
         madeWith: ["godot"],
         links: {
           github: "https://github.com/HidanZZ/space-orbit-godot",
@@ -66,7 +66,7 @@ const Work = ({ innerRef }) => {
         categoryIndex: 1,
         image: "projects/visualnovel.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+          "Visual Novel Test game where you can choose your own path and make your own story",
         madeWith: ["godot"],
         links: {
           github: "https://github.com/HidanZZ/visual-novel",
@@ -78,7 +78,7 @@ const Work = ({ innerRef }) => {
         categoryIndex: 1,
         image: "projects/2048.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+          "clone of the popular 2048 game, where you have to combine the tiles to get the 2048 tile",
         madeWith: ["javascript"],
         links: {
           github: "https://github.com/HidanZZ/nextjs-portfolio/tree/2048",
@@ -91,7 +91,7 @@ const Work = ({ innerRef }) => {
         categoryIndex: 1,
         image: "projects/balloncrush.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+          "Match 3 or more balloons of the same color to pop them and get points",
         madeWith: ["javascript"],
         links: {
           github:
@@ -104,8 +104,7 @@ const Work = ({ innerRef }) => {
         category: "game",
         categoryIndex: 1,
         image: "projects/basketthrower.png",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        description: "Throw the ball into the basket and get points",
         madeWith: ["javascript"],
         links: {
           github:
@@ -119,7 +118,7 @@ const Work = ({ innerRef }) => {
         categoryIndex: 1,
         image: "projects/boxing.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+          "Hit the punching bag as many times as you can with perfect precision",
         madeWith: ["javascript"],
         links: {
           github:
@@ -133,7 +132,7 @@ const Work = ({ innerRef }) => {
         categoryIndex: 1,
         image: "projects/candyland.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+          "Clone of the popular Candy Crush game, where you have to match 3 or more candies of the same color to pop them",
         madeWith: ["javascript"],
         links: {
           github: "https://github.com/HidanZZ/nextjs-portfolio/tree/Candy-Land",
@@ -145,8 +144,7 @@ const Work = ({ innerRef }) => {
         category: "game",
         categoryIndex: 1,
         image: "projects/colorgame.png",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        description: "Find the unmatched color from the given colors",
         madeWith: ["javascript"],
         links: {
           github: "https://github.com/HidanZZ/nextjs-portfolio/tree/color-game",
@@ -158,8 +156,7 @@ const Work = ({ innerRef }) => {
         category: "game",
         categoryIndex: 1,
         image: "projects/eggtoss.png",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        description: "Toss the eggs into the basket and get points",
         madeWith: ["javascript"],
         links: {
           github: "https://github.com/HidanZZ/nextjs-portfolio/tree/egg-toss",
@@ -172,7 +169,7 @@ const Work = ({ innerRef }) => {
         categoryIndex: 1,
         image: "projects/escaperoom.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+          "Dodge the closing platforms to survive and advance to the next level",
         madeWith: ["javascript"],
         links: {
           github:
@@ -185,8 +182,7 @@ const Work = ({ innerRef }) => {
         category: "game",
         categoryIndex: 1,
         image: "projects/goldnuggetas.png",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        description: "Catch the gold nuggets and avoid the black rocks",
         madeWith: ["javascript"],
         links: {
           github:
@@ -199,8 +195,7 @@ const Work = ({ innerRef }) => {
         category: "game",
         categoryIndex: 1,
         image: "projects/jumpingbunny.png",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        description: "Jump over the obstacles and get points",
         madeWith: ["javascript"],
         links: {
           github:
@@ -214,7 +209,7 @@ const Work = ({ innerRef }) => {
         categoryIndex: 1,
         image: "projects/timberjack.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+          "Clone of the popular Timberman game, where you have to cut the trees to get points",
         madeWith: ["javascript"],
         links: {
           github: "https://github.com/HidanZZ/nextjs-portfolio/tree/Timberjack",
@@ -229,7 +224,7 @@ const Work = ({ innerRef }) => {
         categoryIndex: 1,
         image: "projects/finance.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+          "User Interface for a finance app, where you can add your expenses and income",
         madeWith: ["flutter"],
         links: {
           github: "https://github.com/HidanZZ/finance-ui-app",
@@ -241,7 +236,7 @@ const Work = ({ innerRef }) => {
         categoryIndex: 1,
         image: "projects/adzone.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+          "Adzone is an augmented reality application that aims to give life advertisements in a way that benefits both the user and the advertiser",
         madeWith: ["flutter", "nodeJS", "express"],
         links: {
           github: "https://github.com/ramadanhamza/AdZone-front",
@@ -253,7 +248,7 @@ const Work = ({ innerRef }) => {
         categoryIndex: 1,
         image: "projects/alertini.jpg",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+          "Alertini is a mobile application that allows you to create alerts for your favorite products and get notified when they are on sale",
         madeWith: ["react"],
         links: {
           github: "https://github.com/HidanZZ/nextjs-portfolio/tree/Alertini",
@@ -265,7 +260,7 @@ const Work = ({ innerRef }) => {
         categoryIndex: 1,
         image: "projects/quickmath.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+          "Quick Math is a mobile application that allows you to scan a math problem and get the solution instantly",
         madeWith: ["react"],
         links: {
           github: "https://github.com/HidanZZ/nextjs-portfolio/tree/QuickMath",
@@ -279,7 +274,7 @@ const Work = ({ innerRef }) => {
         categoryIndex: 1,
         image: "projects/circuitlab.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+          "Circuit lab is a web application that allows you to create circuits and export them ",
         madeWith: ["react"],
         links: {
           website: "https://circuit-lab--lucky-kataifi-02f63d.netlify.app",
@@ -290,8 +285,7 @@ const Work = ({ innerRef }) => {
         category: "web",
         categoryIndex: 1,
         image: "projects/chainschartlanding.png",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        description: "Landing page for a crypto currency trading platform",
         madeWith: ["react"],
         links: {
           website: "https://chains-chart--lucky-kataifi-02f63d.netlify.app",
@@ -302,8 +296,7 @@ const Work = ({ innerRef }) => {
         category: "web",
         categoryIndex: 1,
         image: "projects/cryptolanding2.png",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+        description: "Landing page for a crypto currency trading platform",
         madeWith: ["html", "css"],
         links: {
           website: "https://stupendous-sfogliatella-9b9fd3.netlify.app",
@@ -315,7 +308,7 @@ const Work = ({ innerRef }) => {
         categoryIndex: 1,
         image: "projects/cryptolanding1.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+          "Landing page for a Startup company that aims to help people to start their own business",
         madeWith: ["react", "nextJS"],
         links: {
           website: "https://startup-landing-five.vercel.app",
@@ -327,7 +320,7 @@ const Work = ({ innerRef }) => {
         categoryIndex: 1,
         image: "projects/chainschartapp.png",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem",
+          "Chains chart is a web application that allows you to create charts and analyze the crypto market",
         madeWith: ["react", "nodeJS"],
         links: {
           website: "https://chains-chart-app--lucky-kataifi-02f63d.netlify.app",

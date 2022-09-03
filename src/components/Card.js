@@ -51,7 +51,7 @@ const Card = ({
       backgroundPosition={"center center"}
     >
       <chakra.div
-        bg={"rgba(0, 0, 0, 0.5)"}
+        bg={"rgba(0, 0, 0, 0.7)"}
         w="100%"
         h="100%"
         pos={"relative"}
