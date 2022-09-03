@@ -16,8 +16,8 @@ import { useScroll } from "framer-motion";
 import { throttle } from "lodash-es";
 import { getGPUTier } from "detect-gpu";
 import { BsTelegram } from "react-icons/bs";
-import { Fiverr } from "@styled-icons/simple-icons";
-
+import { SiFiverr } from "react-icons/si";
+import FPSStats from "react-fps-stats";
 const Home = ({ children }) => {
   const skillsRef = useRef(null);
   const aboutRef = useRef(null);
@@ -72,6 +72,7 @@ const Home = ({ children }) => {
   const [{ top }, set] = useSpring(() => ({ top: 0 }));
   const { scrollY } = useScroll();
   const [tier, setTier] = useState(-1);
+  const [isMobile, setIsMobile] = useState(false);
   const size = useWindowDimensions();
   useEffect(() => {
     return scrollY.onChange((latest) => {
@@ -91,12 +92,14 @@ const Home = ({ children }) => {
         return;
       }
       setTier(res.tier);
+      setIsMobile(res.isMobile);
     }
   }, []);
   return (
     tier > 0 && (
       <div style={{ position: "relative" }}>
         <Box zIndex={9999} position={"fixed"} bottom={0} right={0}>
+          <FPSStats />
           <VStack mb={{ base: 3, md: 6, lg: 8 }} mr={{ base: 2, md: 4, lg: 8 }}>
             <chakra.span m={2}>
               <Link target={"_blank"} href="https://t.me/hidanzz">
@@ -126,7 +129,7 @@ const Home = ({ children }) => {
                   p={2}
                   bg="white"
                   color="gray.700"
-                  icon={<Fiverr />}
+                  icon={<SiFiverr />}
                   _hover={{
                     bg: "white",
                     color: "orange",
@@ -137,7 +140,11 @@ const Home = ({ children }) => {
             </chakra.span>
           </VStack>
         </Box>
-        <Canvas style={{ position: "fixed", top: "0", left: "0" }}>
+        <Canvas
+          gl={{ antialias: true }}
+          style={{ position: "fixed", top: "0", left: "0" }}
+          // dpr={window.devicePixelRatio / 4}
+        >
           <Background
             // color={"#191919"}
             color={top.to(
@@ -157,6 +164,7 @@ const Home = ({ children }) => {
           {/* <StarsParticles position={top.to((top) => [0, -1 + top / 20, 0])} /> */}
 
           <Stars
+            isMobile={isMobile}
             tier={tier}
             position={top.to((top) => [0, -1 + top / 20, 0])}
           />
@@ -211,14 +219,16 @@ function Text({
   } = useThree();
   const scale = viewportWidth > viewportHeight ? viewportWidth : viewportHeight;
   const canvas = useMemo(() => {
+    const isFirefox = typeof InstallTrigger !== "undefined";
+    const divider = isFirefox ? 3 : 1;
     const canvas = document.createElement("canvas");
-    canvas.width = canvas.height = 2048;
+    canvas.width = canvas.height = 2048 / divider;
     const context = canvas.getContext("2d");
-    context.font = `bold ${fontSize}px Raleway, monospace`;
+    context.font = `bold ${fontSize / divider}px Raleway, monospace`;
     context.textAlign = "center";
     context.textBaseline = "middle";
     context.fillStyle = color;
-    context.fillText(children, 1024, 1024 - 410 / 2);
+    context.fillText(children, 1024 / divider, (1024 - 410 / 2) / divider);
     return canvas;
   }, [children, fontSize, width, height]);
   let texture = new THREE.CanvasTexture(canvas);
@@ -256,37 +266,43 @@ function Background({ color }) {
     </mesh>
   );
 }
-function Stars({ position, tier }) {
+function Stars({ position, isMobile, tier }) {
   let group = useRef();
   let theta = 0;
   const mouse = useRef({ x: 0, y: 0, hasMoved: false });
 
   useEffect(() => {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
+    if (!isMobile) {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
 
-    const updMouse = (ev) => {
-      mouse.current.x = (ev.clientX / w) * 20 - 10;
-      mouse.current.y = (ev.clientY / h) * 20 - 10;
-      mouse.current.hasMoved = true;
-    };
-    const throttled = throttle(updMouse, 60);
+      const updMouse = (ev) => {
+        mouse.current.x = (ev.clientX / w) * 20 - 10;
+        mouse.current.y = (ev.clientY / h) * 20 - 10;
+        mouse.current.hasMoved = true;
+      };
+      const throttled = throttle(updMouse, 60);
 
-    window.addEventListener("mousemove", throttled);
-    return () => {
-      window.removeEventListener("mousemove", throttled);
-    };
+      window.addEventListener("mousemove", throttled);
+      return () => {
+        window.removeEventListener("mousemove", throttled);
+      };
+    }
   }, []);
   useFrame((state, delta) => {
     const r = 5 * Math.sin(degToRad((theta += 0.02)));
     const s = Math.cos(degToRad(theta * 2));
 
     group.current.scale.set(s, s, s);
-    if (!mouse.current.hasMoved) {
+    if (!isMobile) {
+      if (!mouse.current.hasMoved) {
+        group.current.rotation.set(r, r, r);
+      }
+      group.current.rotation.x -= mouse.current.y * delta * 0.02;
+      group.current.rotation.y -= mouse.current.x * delta * 0.02;
+    } else {
       group.current.rotation.set(r, r, r);
     }
-    group.current.rotation.x -= mouse.current.y * delta * 0.02;
-    group.current.rotation.y -= mouse.current.x * delta * 0.02;
   });
   const [geo, mat, coords] = useMemo(() => {
     const geo = new THREE.SphereBufferGeometry(1, 10, 10);
@@ -294,8 +310,7 @@ function Stars({ position, tier }) {
       color: "white",
       transparent: true,
     });
-    console.log("tier", tier);
-    const coords = new Array(tier * 500 + (tier - 1) * 500)
+    const coords = new Array(tier * 100 + (tier - 1) * 100)
       .fill()
       .map((i) => [
         2000 * Math.random() - 1000,

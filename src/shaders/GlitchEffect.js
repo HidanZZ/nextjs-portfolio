@@ -142,7 +142,6 @@ export class GlitchEffect extends Effect {
       // console.log(TextureLoader.load("red.jpg"));
       // this.perturbationMap = TextureLoader.load("red.jpg");
     } else {
-      console.log("here");
       this.perturbationMap = perturbationMap;
     }
 
