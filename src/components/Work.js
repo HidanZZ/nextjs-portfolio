@@ -38,7 +38,7 @@ const Work = ({ innerRef }) => {
         title: "Pixel Farm",
         category: "game",
         categoryIndex: 1,
-        image: "projects/pixelfarm.png",
+        image: "/projects/pixelfarm.png",
         description:
           "Farming game where you can buy crops, grow them and sell them for money",
         madeWith: ["godot"],
@@ -51,7 +51,7 @@ const Work = ({ innerRef }) => {
         title: "Space Orbit",
         category: "game",
         categoryIndex: 1,
-        image: "projects/spaceorbit.png",
+        image: "/projects/spaceorbit.png",
         description:
           "Don't let the asteroids hit you! Dodge them and collect the coins",
         madeWith: ["godot"],
@@ -64,7 +64,7 @@ const Work = ({ innerRef }) => {
         title: "Visual Novel",
         category: "game",
         categoryIndex: 1,
-        image: "projects/visualnovel.png",
+        image: "/projects/visualnovel.png",
         description:
           "Visual Novel Test game where you can choose your own path and make your own story",
         madeWith: ["godot"],
@@ -76,7 +76,7 @@ const Work = ({ innerRef }) => {
         title: "2048",
         category: "game",
         categoryIndex: 1,
-        image: "projects/2048.png",
+        image: "/projects/2048.png",
         description:
           "clone of the popular 2048 game, where you have to combine the tiles to get the 2048 tile",
         madeWith: ["javascript"],
@@ -88,7 +88,7 @@ const Work = ({ innerRef }) => {
         title: "Balloon Crush",
         category: "game",
         categoryIndex: 1,
-        image: "projects/balloncrush.png",
+        image: "/projects/balloncrush.png",
         description:
           "Match 3 or more balloons of the same color to pop them and get points",
         madeWith: ["javascript"],
@@ -100,7 +100,7 @@ const Work = ({ innerRef }) => {
         title: "Basketball",
         category: "game",
         categoryIndex: 1,
-        image: "projects/basketthrower.png",
+        image: "/projects/basketthrower.png",
         description: "Throw the ball into the basket and get points",
         madeWith: ["javascript"],
         links: {
@@ -111,7 +111,7 @@ const Work = ({ innerRef }) => {
         title: "Boxing Arcade",
         category: "game",
         categoryIndex: 1,
-        image: "projects/boxing.png",
+        image: "/projects/boxing.png",
         description:
           "Hit the punching bag as many times as you can with perfect precision",
         madeWith: ["javascript"],
@@ -123,7 +123,7 @@ const Work = ({ innerRef }) => {
         title: "Candy Land",
         category: "game",
         categoryIndex: 1,
-        image: "projects/candyland.png",
+        image: "/projects/candyland.png",
         description:
           "Clone of the popular Candy Crush game, where you have to match 3 or more candies of the same color to pop them",
         madeWith: ["javascript"],
@@ -135,7 +135,7 @@ const Work = ({ innerRef }) => {
         title: "Color game",
         category: "game",
         categoryIndex: 1,
-        image: "projects/colorgame.png",
+        image: "/projects/colorgame.png",
         description: "Find the unmatched color from the given colors",
         madeWith: ["javascript"],
         links: {
@@ -146,7 +146,7 @@ const Work = ({ innerRef }) => {
         title: "Egg Toss",
         category: "game",
         categoryIndex: 1,
-        image: "projects/eggtoss.png",
+        image: "/projects/eggtoss.png",
         description: "Toss the eggs into the basket and get points",
         madeWith: ["javascript"],
         links: {
@@ -157,7 +157,7 @@ const Work = ({ innerRef }) => {
         title: "Escape room",
         category: "game",
         categoryIndex: 1,
-        image: "projects/escaperoom.png",
+        image: "/projects/escaperoom.png",
         description:
           "Dodge the closing platforms to survive and advance to the next level",
         madeWith: ["javascript"],
@@ -169,7 +169,7 @@ const Work = ({ innerRef }) => {
         title: "Gold nuggets",
         category: "game",
         categoryIndex: 1,
-        image: "projects/goldnuggetas.png",
+        image: "/projects/goldnuggetas.png",
         description: "Catch the gold nuggets and avoid the black rocks",
         madeWith: ["javascript"],
         links: {
@@ -180,7 +180,7 @@ const Work = ({ innerRef }) => {
         title: "Jumping Bunny",
         category: "game",
         categoryIndex: 1,
-        image: "projects/jumpingbunny.png",
+        image: "/projects/jumpingbunny.png",
         description: "Jump over the obstacles and get points",
         madeWith: ["javascript"],
         links: {
@@ -191,7 +191,7 @@ const Work = ({ innerRef }) => {
         title: "Timberjack",
         category: "game",
         categoryIndex: 1,
-        image: "projects/timberjack.png",
+        image: "/projects/timberjack.png",
         description:
           "Clone of the popular Timberman game, where you have to cut the trees to get points",
         madeWith: ["javascript"],
@@ -205,7 +205,7 @@ const Work = ({ innerRef }) => {
         title: "Finance App",
         category: "app",
         categoryIndex: 1,
-        image: "projects/finance.png",
+        image: "/projects/finance.png",
         description:
           "User Interface for a finance app, where you can add your expenses and income",
         madeWith: ["flutter"],
@@ -217,7 +217,7 @@ const Work = ({ innerRef }) => {
         title: "AdZone",
         category: "app",
         categoryIndex: 1,
-        image: "projects/adzone.png",
+        image: "/projects/adzone.png",
         description:
           "Adzone is an augmented reality application that aims to give life advertisements in a way that benefits both the user and the advertiser",
         madeWith: ["flutter", "nodeJS", "express"],
@@ -229,7 +229,7 @@ const Work = ({ innerRef }) => {
         title: "Alertini",
         category: "app",
         categoryIndex: 1,
-        image: "projects/alertini.jpg",
+        image: "/projects/alertini.jpg",
         description:
           "Alertini is a mobile application that allows you to create alerts for your favorite products and get notified when they are on sale",
         madeWith: ["react"],
@@ -241,7 +241,7 @@ const Work = ({ innerRef }) => {
         title: "Quick Math",
         category: "app",
         categoryIndex: 1,
-        image: "projects/quickmath.png",
+        image: "/projects/quickmath.png",
         description:
           "Quick Math is a mobile application that allows you to scan a math problem and get the solution instantly",
         madeWith: ["react"],
@@ -255,7 +255,7 @@ const Work = ({ innerRef }) => {
         title: "Circuit lab app",
         category: "web",
         categoryIndex: 1,
-        image: "projects/circuitlab.png",
+        image: "/projects/circuitlab.png",
         description:
           "Circuit lab is a web application that allows you to create circuits and export them ",
         madeWith: ["react"],
@@ -267,7 +267,7 @@ const Work = ({ innerRef }) => {
         title: "Chains Chart landing page",
         category: "web",
         categoryIndex: 1,
-        image: "projects/chainschartlanding.png",
+        image: "/projects/chainschartlanding.png",
         description: "Landing page for a crypto currency trading platform",
         madeWith: ["react"],
         links: {
@@ -278,7 +278,7 @@ const Work = ({ innerRef }) => {
         title: "Crypto landing page",
         category: "web",
         categoryIndex: 1,
-        image: "projects/cryptolanding2.png",
+        image: "/projects/cryptolanding2.png",
         description: "Landing page for a crypto currency trading platform",
         madeWith: ["html", "css"],
         links: {
@@ -289,7 +289,7 @@ const Work = ({ innerRef }) => {
         title: "Startup landing ",
         category: "web",
         categoryIndex: 1,
-        image: "projects/cryptolanding1.png",
+        image: "/projects/cryptolanding1.png",
         description:
           "Landing page for a Startup company that aims to help people to start their own business",
         madeWith: ["react", "nextJS"],
@@ -301,7 +301,7 @@ const Work = ({ innerRef }) => {
         title: "Chains chart app",
         category: "web",
         categoryIndex: 1,
-        image: "projects/chainschartapp.png",
+        image: "/projects/chainschartapp.png",
         description:
           "Chains chart is a web application that allows you to create charts and analyze the crypto market",
         madeWith: ["react", "nodeJS"],

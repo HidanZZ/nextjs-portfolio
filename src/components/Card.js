@@ -1,6 +1,6 @@
 import { ExternalLinkIcon } from "@chakra-ui/icons";
-
-import { chakra, Image, Tooltip } from "@chakra-ui/react";
+import Image from "next/image";
+import { chakra, Tooltip } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { icons } from "../utils/icons";
@@ -44,12 +44,24 @@ const Card = ({
       as={motion.div}
       width={"280px"}
       height={"380px"}
-      backgroundSize={"cover"}
-      backgroundImage={bgPhoto}
+      pos={"relative"}
       borderRadius={"8px"}
       boxShadow={"0 3px 8px 0 rgba(0, 0, 0, 0.08)"}
-      backgroundPosition={"center center"}
     >
+      <Image
+        layout="fill"
+        objectFit="cover"
+        objectPosition="center"
+        style={{
+          borderRadius: "9px",
+          position: "absolute",
+          top: "0",
+          left: "0",
+          right: "0",
+          bottom: "0",
+        }}
+        src={bgPhoto}
+      />
       <chakra.div
         bg={"rgba(0, 0, 0, 0.7)"}
         w="100%"
@@ -208,7 +220,7 @@ const Card = ({
                     {madeWith.map((item, index) => (
                       <Image
                         key={index}
-                        src={icons[item]}
+                        src={`/${icons[item]}`}
                         alt={item}
                         width={"20px"}
                         height={"20px"}
