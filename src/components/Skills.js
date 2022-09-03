@@ -10,6 +10,7 @@ const Skills = ({ innerRef, mt }) => {
   });
   const [subtitleRef, inViewSub] = useInView({
     threshold: 0,
+    triggerOnce: true,
   });
 
   return (

@@ -104,6 +104,7 @@ export default function Testimonials({ innerRef, mt }) {
   });
   const [controlsRef, inViewControls] = useInView({
     threshold: 1,
+    triggerOnce: true,
   });
   const titleVariants = {
     initial: {
