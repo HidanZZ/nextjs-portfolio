@@ -81,7 +81,6 @@ const Work = ({ innerRef }) => {
           "clone of the popular 2048 game, where you have to combine the tiles to get the 2048 tile",
         madeWith: ["javascript"],
         links: {
-          github: "https://github.com/HidanZZ/nextjs-portfolio/tree/2048",
           website: "https://lucky-kataifi-02f63d.netlify.app",
         },
       },
@@ -94,8 +93,6 @@ const Work = ({ innerRef }) => {
           "Match 3 or more balloons of the same color to pop them and get points",
         madeWith: ["javascript"],
         links: {
-          github:
-            "https://github.com/HidanZZ/nextjs-portfolio/tree/balloon-crush",
           website: "https://balloon-crush--lucky-kataifi-02f63d.netlify.app",
         },
       },
@@ -107,8 +104,6 @@ const Work = ({ innerRef }) => {
         description: "Throw the ball into the basket and get points",
         madeWith: ["javascript"],
         links: {
-          github:
-            "https://github.com/HidanZZ/nextjs-portfolio/tree/basket-thrower",
           website: "https://basket-thrower--lucky-kataifi-02f63d.netlify.app",
         },
       },
@@ -121,8 +116,6 @@ const Work = ({ innerRef }) => {
           "Hit the punching bag as many times as you can with perfect precision",
         madeWith: ["javascript"],
         links: {
-          github:
-            "https://github.com/HidanZZ/nextjs-portfolio/tree/boxing-arcade",
           website: "https://boxing-arcade--lucky-kataifi-02f63d.netlify.app",
         },
       },
@@ -135,7 +128,6 @@ const Work = ({ innerRef }) => {
           "Clone of the popular Candy Crush game, where you have to match 3 or more candies of the same color to pop them",
         madeWith: ["javascript"],
         links: {
-          github: "https://github.com/HidanZZ/nextjs-portfolio/tree/Candy-Land",
           website: "https://candy-land--lucky-kataifi-02f63d.netlify.app",
         },
       },
@@ -147,7 +139,6 @@ const Work = ({ innerRef }) => {
         description: "Find the unmatched color from the given colors",
         madeWith: ["javascript"],
         links: {
-          github: "https://github.com/HidanZZ/nextjs-portfolio/tree/color-game",
           website: "https://color-game--lucky-kataifi-02f63d.netlify.app",
         },
       },
@@ -159,7 +150,6 @@ const Work = ({ innerRef }) => {
         description: "Toss the eggs into the basket and get points",
         madeWith: ["javascript"],
         links: {
-          github: "https://github.com/HidanZZ/nextjs-portfolio/tree/egg-toss",
           website: "https://egg-toss--lucky-kataifi-02f63d.netlify.app",
         },
       },
@@ -172,8 +162,6 @@ const Work = ({ innerRef }) => {
           "Dodge the closing platforms to survive and advance to the next level",
         madeWith: ["javascript"],
         links: {
-          github:
-            "https://github.com/HidanZZ/nextjs-portfolio/tree/Escape-Room",
           website: "https://escape-room--lucky-kataifi-02f63d.netlify.app",
         },
       },
@@ -185,8 +173,6 @@ const Work = ({ innerRef }) => {
         description: "Catch the gold nuggets and avoid the black rocks",
         madeWith: ["javascript"],
         links: {
-          github:
-            "https://github.com/HidanZZ/nextjs-portfolio/tree/GoldNuggets",
           website: "https://goldnuggets--lucky-kataifi-02f63d.netlify.app",
         },
       },
@@ -198,8 +184,6 @@ const Work = ({ innerRef }) => {
         description: "Jump over the obstacles and get points",
         madeWith: ["javascript"],
         links: {
-          github:
-            "https://github.com/HidanZZ/nextjs-portfolio/tree/jumping-bunny",
           website: "https://jumping-bunny--lucky-kataifi-02f63d.netlify.app",
         },
       },
@@ -212,7 +196,6 @@ const Work = ({ innerRef }) => {
           "Clone of the popular Timberman game, where you have to cut the trees to get points",
         madeWith: ["javascript"],
         links: {
-          github: "https://github.com/HidanZZ/nextjs-portfolio/tree/Timberjack",
           website: "https://timberjack--lucky-kataifi-02f63d.netlify.app",
         },
       },

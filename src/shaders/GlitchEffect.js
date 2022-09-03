@@ -122,25 +122,11 @@ export class GlitchEffect extends Effect {
         ["distortion", new Uniform(new Vector2())],
       ]),
     });
-    // uniforms: {
-    //     tDiffuse: { value: null }, //diffuse texture
-    //     tDisp: { value: null }, //displacement texture for digital glitch squares
-    //     byp: { value: 0 }, //apply the glitch ?
-    //     amount: { value: 0.08 },
-    //     angle: { value: 0.02 },
-    //     seed: { value: 0.02 },
-    //     seed_x: { value: 0.02 }, //-1,1
-    //     seed_y: { value: 0.02 }, //-1,1
-    //     distortion_x: { value: 0.5 },
-    //     distortion_y: { value: 0.6 },
-    //     col_s: { value: 0.05 },
-    //   },
+
     if (perturbationMap === null) {
       const map = new NoiseTexture(dtSize, dtSize, RGBAFormat);
       map.name = textureTag;
       this.perturbationMap = map;
-      // console.log(TextureLoader.load("red.jpg"));
-      // this.perturbationMap = TextureLoader.load("red.jpg");
     } else {
       this.perturbationMap = perturbationMap;
     }

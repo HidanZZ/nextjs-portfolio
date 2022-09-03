@@ -4,8 +4,8 @@ import { chakra, Image, Tooltip } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { icons } from "../utils/icons";
-import { EyeFill } from "@styled-icons/bootstrap";
-import { Github } from "@styled-icons/entypo-social";
+import { AiFillEye, AiFillGithub } from "react-icons/ai";
+
 const cardVariant = {
   active: {
     opacity: 1,
@@ -117,7 +117,7 @@ const Card = ({
                     justifyContent={"center"}
                     alignItems={"center"}
                   >
-                    <EyeFill fill={"white"} size={50} />
+                    <AiFillEye fill={"white"} size={50} />
                   </chakra.a>
                 </Tooltip>
               )}
@@ -143,7 +143,7 @@ const Card = ({
                     justifyContent={"center"}
                     alignItems={"center"}
                   >
-                    <Github fill={"white"} size={50} />
+                    <AiFillGithub fill={"white"} size={50} />
                   </chakra.a>
                 </Tooltip>
               )}

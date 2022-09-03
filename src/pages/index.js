@@ -1,39 +1,27 @@
-// import { useEffect, useState } from "react";
 import { Box, VStack, chakra, Link, IconButton } from "@chakra-ui/react";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Work from "../components/Work";
 import About from "../components/About";
 import Testimonials from "../components/Testimonials";
 import ContactFormWithSocialButtons from "../components/Contact";
-import Emitter from "../services/emitter";
 import Skills from "../components/Skills";
-import { EffectComposer } from "@react-three/postprocessing";
-import { useThree, Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { Glitch } from "../shaders/Glitch";
-import * as THREE from "three/src/Three";
-import { withExtend, useSpring, a, to } from "@react-spring/three";
-import { useScroll } from "framer-motion";
-import { throttle } from "lodash-es";
-import { getGPUTier } from "detect-gpu";
+
+import Emitter from "../services/emitter";
+
+import { useSpring } from "@react-spring/three";
+
 import { BsTelegram } from "react-icons/bs";
 import { SiFiverr } from "react-icons/si";
-import FPSStats from "react-fps-stats";
+import { getGPUTier } from "detect-gpu";
+import { useScroll } from "framer-motion";
+import HeroCanvas from "../components/hero/Wrapper";
+
 const Home = ({ children }) => {
   const skillsRef = useRef(null);
   const aboutRef = useRef(null);
   const worksRef = useRef(null);
   const testRef = useRef(null);
   const contactRef = useRef(null);
-  const [textIndex, setTextIndex] = useState(0);
-  const placeHolders = [
-    { text: "Hello", fontSize: { md: 200, sm: 100 } },
-    { text: "I'm Hidanz", fontSize: { md: 150, sm: 85 } },
-    { text: "Multi Talented Developer", fontSize: { md: 100, sm: 50 } },
-    { text: "check out my work", fontSize: { md: 110, sm: 60 } },
-  ];
-  const getIndex = (i) => {
-    return i % placeHolders.length;
-  };
 
   Emitter.on("scrollToAbout", () => {
     if (aboutRef.current) {
@@ -63,17 +51,13 @@ const Home = ({ children }) => {
     Emitter.on("scrollToTop", () => {
       window.scrollTo(0, 0);
     });
-  const confetti = {
-    light: {
-      primary: "C84B31", // blue.400
-      secondary: "ECDBBA", // blue.100
-    },
-  };
+
   const [{ top }, set] = useSpring(() => ({ top: 0 }));
   const { scrollY } = useScroll();
-  const [tier, setTier] = useState(-1);
+  const [tier, setTier] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
   const size = useWindowDimensions();
+
   useEffect(() => {
     return scrollY.onChange((latest) => {
       set({ top: latest });
@@ -87,6 +71,7 @@ const Home = ({ children }) => {
     };
 
     async function getTier() {
+      console.log("getting tier");
       const res = await getGPUTier();
       if (!active) {
         return;
@@ -99,7 +84,6 @@ const Home = ({ children }) => {
     tier > 0 && (
       <div style={{ position: "relative" }}>
         <Box zIndex={9999} position={"fixed"} bottom={0} right={0}>
-          <FPSStats />
           <VStack mb={{ base: 3, md: 6, lg: 8 }} mr={{ base: 2, md: 4, lg: 8 }}>
             <chakra.span m={2}>
               <Link target={"_blank"} href="https://t.me/hidanzz">
@@ -140,46 +124,13 @@ const Home = ({ children }) => {
             </chakra.span>
           </VStack>
         </Box>
-        <Canvas
-          gl={{ antialias: true }}
-          style={{ position: "fixed", top: "0", left: "0" }}
-          // dpr={window.devicePixelRatio / 4}
-        >
-          <Background
-            // color={"#191919"}
-            color={top.to(
-              [0, size.height * 2, size.height * 5, size.height * 10],
-              ["#191919", "#005B9F", "#191919", "#191919"]
-              // ['#27282F', '#247BA0', '#70C1B3', '#f8f3f1']
-            )}
-          />
-
-          <Effects
-            onFinish={() => {
-              setTextIndex((prev) => prev + 1);
-            }}
-            scrollY={scrollY}
-            height={size.height}
-          />
-          {/* <StarsParticles position={top.to((top) => [0, -1 + top / 20, 0])} /> */}
-
-          <Stars
-            isMobile={isMobile}
-            tier={tier}
-            position={top.to((top) => [0, -1 + top / 20, 0])}
-          />
-          <Text
-            fontSize={
-              size.width > 768
-                ? placeHolders[getIndex(textIndex)].fontSize.md
-                : placeHolders[getIndex(textIndex)].fontSize.sm
-            }
-            opacity={top.to([0, size.height / 2.5], [1, 0])}
-            position={top.to((top) => [0, -1 + top / 130, 0])}
-          >
-            {placeHolders[getIndex(textIndex)].text}
-          </Text>
-        </Canvas>
+        <HeroCanvas
+          tier={tier}
+          isMobile={isMobile}
+          scrollY={scrollY}
+          size={size}
+          top={top}
+        ></HeroCanvas>
         <Box minH={"100vh"}></Box>
         <About innerRef={aboutRef} mt={{ base: 3, md: 0 }} />
         <Skills innerRef={skillsRef}></Skills>
@@ -190,145 +141,7 @@ const Home = ({ children }) => {
     )
   );
 };
-const Effects = ({ onFinish, scrollY, height }) => {
-  const [glitchActive, setGlitchActive] = useState(true);
 
-  useFrame(() => {
-    if (scrollY.current > height - 100) {
-      setGlitchActive(false);
-    } else {
-      setGlitchActive(true);
-    }
-  });
-  return (
-    <EffectComposer>
-      {glitchActive && <Glitch onFinish={onFinish} />}
-    </EffectComposer>
-  );
-};
-function Text({
-  children,
-  position,
-  opacity,
-  color = "white",
-  fontSize = 200,
-}) {
-  const {
-    size: { width, height },
-    viewport: { width: viewportWidth, height: viewportHeight },
-  } = useThree();
-  const scale = viewportWidth > viewportHeight ? viewportWidth : viewportHeight;
-  const canvas = useMemo(() => {
-    const isFirefox = typeof InstallTrigger !== "undefined";
-    const divider = isFirefox ? 3 : 1;
-    const canvas = document.createElement("canvas");
-    canvas.width = canvas.height = 2048 / divider;
-    const context = canvas.getContext("2d");
-    context.font = `bold ${fontSize / divider}px Raleway, monospace`;
-    context.textAlign = "center";
-    context.textBaseline = "middle";
-    context.fillStyle = color;
-    context.fillText(children, 1024 / divider, (1024 - 410 / 2) / divider);
-    return canvas;
-  }, [children, fontSize, width, height]);
-  let texture = new THREE.CanvasTexture(canvas);
-  texture.needsUpdate = true;
-  useFrame(() => {
-    texture.needsUpdate = true;
-  });
-  return (
-    <a.sprite scale={[scale, scale, 1]} position={position}>
-      <a.spriteMaterial
-        attach="material"
-        map={texture}
-        transparent
-        opacity={opacity}
-      >
-        <a.canvasTexture
-          attach="map"
-          premultiplyAlpha
-          image={canvas}
-          onUpdate={(s) => {
-            s.needsUpdate = true;
-          }}
-        />
-      </a.spriteMaterial>
-    </a.sprite>
-  );
-}
-const degToRad = (deg) => deg * (Math.PI / 180);
-function Background({ color }) {
-  const { viewport } = useThree();
-  return (
-    <mesh scale={[viewport.width, viewport.height, 1]}>
-      <planeGeometry attach="geometry" args={[1, 1]} />
-      <a.meshBasicMaterial attach="material" color={color} depthTest={false} />
-    </mesh>
-  );
-}
-function Stars({ position, isMobile, tier }) {
-  let group = useRef();
-  let theta = 0;
-  const mouse = useRef({ x: 0, y: 0, hasMoved: false });
-
-  useEffect(() => {
-    if (!isMobile) {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-
-      const updMouse = (ev) => {
-        mouse.current.x = (ev.clientX / w) * 20 - 10;
-        mouse.current.y = (ev.clientY / h) * 20 - 10;
-        mouse.current.hasMoved = true;
-      };
-      const throttled = throttle(updMouse, 60);
-
-      window.addEventListener("mousemove", throttled);
-      return () => {
-        window.removeEventListener("mousemove", throttled);
-      };
-    }
-  }, []);
-  useFrame((state, delta) => {
-    const r = 5 * Math.sin(degToRad((theta += 0.02)));
-    const s = Math.cos(degToRad(theta * 2));
-
-    group.current.scale.set(s, s, s);
-    if (!isMobile) {
-      if (!mouse.current.hasMoved) {
-        group.current.rotation.set(r, r, r);
-      }
-      group.current.rotation.x -= mouse.current.y * delta * 0.02;
-      group.current.rotation.y -= mouse.current.x * delta * 0.02;
-    } else {
-      group.current.rotation.set(r, r, r);
-    }
-  });
-  const [geo, mat, coords] = useMemo(() => {
-    const geo = new THREE.SphereBufferGeometry(1, 10, 10);
-    const mat = new THREE.MeshBasicMaterial({
-      color: "white",
-      transparent: true,
-    });
-    const n = isMobile ? 100 : 300;
-    const coords = new Array(tier * n + (tier - 1) * n)
-      .fill()
-      .map((i) => [
-        2000 * Math.random() - 1000,
-        2000 * Math.random() - 1000,
-        2000 * Math.random() - 1000,
-      ]);
-
-    return [geo, mat, coords];
-  }, []);
-  return (
-    <a.group ref={group} position={position}>
-      {coords.map(([p1, p2, p3], i) => (
-        <mesh key={i} geometry={geo} material={mat} position={[p1, p2, p3]} />
-      ))}
-    </a.group>
-  );
-}
 const useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState({
     width: undefined,

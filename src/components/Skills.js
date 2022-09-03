@@ -1,8 +1,7 @@
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { Box, chakra, Flex, Image } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
-import { useEffect, useRef, useState, useLayoutEffect } from "react";
-import Vibrant from "node-vibrant";
+import { useEffect, useRef, useState } from "react";
 import { iconsWithNames } from "../utils/icons";
 const Skills = ({ innerRef, mt }) => {
   const [titleRef, inViewTitle] = useInView({
@@ -228,30 +227,5 @@ const itemVariants = {
     transition: { delay: delayRef.current },
   }),
 };
-
-//extract dominant color from image
-async function getDominantColor(url) {
-  const v = await Vibrant.from(url).getPalette();
-  return v.Vibrant.getHex();
-}
-//hex to rgba
-function hexToRgbA(hex, alpha) {
-  var c;
-  if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
-    c = hex.substring(1).split("");
-    if (c.length == 3) {
-      c = [c[0], c[0], c[1], c[1], c[2], c[2]];
-    }
-    c = "0x" + c.join("");
-    return (
-      "rgba(" +
-      [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(",") +
-      "," +
-      alpha +
-      ")"
-    );
-  }
-  throw new Error("Bad Hex");
-}
 
 export default Skills;
