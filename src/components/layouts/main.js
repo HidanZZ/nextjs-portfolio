@@ -17,7 +17,7 @@ const Main = (props) => {
       <motion.div as="main">
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <title>Hidanz portfolio</title>
+          <title>Hidanz | dev</title>
         </Head>
         <NavBar />
         <Box w="full" maxW="100vw">

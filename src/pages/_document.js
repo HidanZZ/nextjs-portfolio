@@ -30,7 +30,11 @@ export default class Document extends NextDocument {
           ></link>
           <link rel="manifest" href="favicon/site.webmanifest"></link>
         </Head>
-        <body>
+        <body
+          style={{
+            overflowX: "hidden",
+          }}
+        >
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Main />
           <NextScript />

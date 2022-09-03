@@ -39,7 +39,6 @@ export default function ContactFormWithSocialButtons({ innerRef, mt }) {
   const [ismessageInvalid, setIsmessageInvalid] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Sending");
 
     let data = {
       name,
@@ -77,9 +76,7 @@ export default function ContactFormWithSocialButtons({ innerRef, mt }) {
         },
         body: JSON.stringify(data),
       }).then((res) => {
-        console.log("Response received");
         if (res.status === 200) {
-          console.log("Response succeeded!");
           setName("");
           setEmail("");
           setMessage("");

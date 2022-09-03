@@ -109,11 +109,11 @@ const Home = ({ children }) => {
                   size="lg"
                   fontSize="3xl"
                   bg="white"
-                  color="gray.700"
+                  color="blue.400"
                   icon={<BsTelegram />}
                   _hover={{
                     bg: "white",
-                    color: "orange",
+                    color: "blue.400",
                   }}
                   isRound
                 />
@@ -128,11 +128,11 @@ const Home = ({ children }) => {
                   fontSize="2xl"
                   p={2}
                   bg="white"
-                  color="gray.700"
+                  color="green.500"
                   icon={<SiFiverr />}
                   _hover={{
                     bg: "white",
-                    color: "orange",
+                    color: "green.500",
                   }}
                   isRound
                 />
@@ -148,8 +148,8 @@ const Home = ({ children }) => {
           <Background
             // color={"#191919"}
             color={top.to(
-              [0, size.height * 2, size.height * 5],
-              ["#191919", "#005B9F", "#191919"]
+              [0, size.height * 2, size.height * 5, size.height * 10],
+              ["#191919", "#005B9F", "#191919", "#191919"]
               // ['#27282F', '#247BA0', '#70C1B3', '#f8f3f1']
             )}
           />
@@ -175,7 +175,7 @@ const Home = ({ children }) => {
                 : placeHolders[getIndex(textIndex)].fontSize.sm
             }
             opacity={top.to([0, size.height / 2.5], [1, 0])}
-            position={top.to((top) => [0, -1 + top / 200, 0])}
+            position={top.to((top) => [0, -1 + top / 130, 0])}
           >
             {placeHolders[getIndex(textIndex)].text}
           </Text>
@@ -310,7 +310,8 @@ function Stars({ position, isMobile, tier }) {
       color: "white",
       transparent: true,
     });
-    const coords = new Array(tier * 100 + (tier - 1) * 100)
+    const n = isMobile ? 100 : 300;
+    const coords = new Array(tier * n + (tier - 1) * n)
       .fill()
       .map((i) => [
         2000 * Math.random() - 1000,
