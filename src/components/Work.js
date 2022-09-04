@@ -69,6 +69,7 @@ const Work = ({ innerRef }) => {
           "Visual Novel Test game where you can choose your own path and make your own story",
         madeWith: ["godot"],
         links: {
+          website: "https://hidanzz.github.io/visual-novel/",
           github: "https://github.com/HidanZZ/visual-novel",
         },
       },
