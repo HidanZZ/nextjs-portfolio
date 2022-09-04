@@ -1,25 +1,46 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, chakra } from "@chakra-ui/react";
 import Main from "../components/layouts/main";
 import theme from "../utils/theme";
 import "../css/global.css";
+import "../css/styles.scss";
 import Script from "next/script";
 import { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 
 const App = ({ Component, pageProps, router }) => {
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const loader = document.getElementById("globalLoader");
-      if (loader) loader.remove();
-    }
+    controls.start("animate");
   }, []);
+  const controls = useAnimation();
+  const variants = {
+    initial: {
+      top: "50%",
+    },
+    animate: {
+      top: "-50%",
+      transition: {
+        duration: 1,
+        ease: "easeInOut",
+      },
+    },
+  };
   return (
     <>
-      <div id="globalLoader">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
-          alt=""
-        />
-      </div>
+      <chakra.div
+        variants={variants}
+        initial="initial"
+        animate={controls}
+        as={motion.div}
+        id="globalLoader"
+      >
+        <div className="loading">
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
+        </div>
+      </chakra.div>
       <Script
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_ANALYTICS_ID}`}
