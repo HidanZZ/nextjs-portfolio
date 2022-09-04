@@ -241,7 +241,7 @@ const Work = ({ innerRef }) => {
         title: "Quick Math",
         category: "app",
         categoryIndex: 1,
-        image: "/projects/quickmath.png",
+        image: "/projects/Quickmath.png",
         description:
           "Quick Math is a mobile application that allows you to scan a math problem and get the solution instantly",
         madeWith: ["react"],
