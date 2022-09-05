@@ -19,11 +19,12 @@ import {
   chakra,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { SiFiverr } from "react-icons/si";
-
+import mailSent from "../animations/sent.json";
+import Lottie from "lottie-react";
 import { useState } from "react";
-import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from "react-icons/bs";
+import { BsGithub, BsLinkedin, BsPerson } from "react-icons/bs";
 import { MdEmail, MdOutlineEmail } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
 
@@ -38,6 +39,8 @@ export default function ContactFormWithSocialButtons({ innerRef, mt }) {
   const [isnameInvalid, setIsnameInvalid] = useState(false);
   const [isemailInvalid, setIsemailInvalid] = useState(false);
   const [ismessageInvalid, setIsmessageInvalid] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -69,6 +72,7 @@ export default function ContactFormWithSocialButtons({ innerRef, mt }) {
       setIsnameInvalid(false);
       setIsemailInvalid(false);
       setIsmessageInvalid(false);
+      setIsSending(true);
       fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -81,6 +85,9 @@ export default function ContactFormWithSocialButtons({ innerRef, mt }) {
           setName("");
           setEmail("");
           setMessage("");
+          setIsSending(false);
+
+          setIsSent(true);
         }
       });
     }
@@ -205,8 +212,13 @@ export default function ContactFormWithSocialButtons({ innerRef, mt }) {
                 color={useColorModeValue("gray.700", "whiteAlpha.900")}
                 shadow="base"
                 width={"100%"}
+                position="relative"
               >
-                <VStack spacing={{ base: 2, md: 5 }}>
+                <VStack
+                  pos={isSent ? "relative" : "absolute"}
+                  visibility={"hidden"}
+                  spacing={{ base: 2, md: 5 }}
+                >
                   <FormControl isInvalid={isnameInvalid} isRequired>
                     <FormLabel>Name</FormLabel>
 
@@ -266,9 +278,108 @@ export default function ContactFormWithSocialButtons({ innerRef, mt }) {
                       color: "orange",
                     }}
                   >
-                    Send Message
+                    {isSending ? (
+                      <span>Sending ...</span>
+                    ) : (
+                      <span>Send Message</span>
+                    )}
                   </Button>
                 </VStack>
+                <AnimatePresence>
+                  {!isSent ? (
+                    <VStack
+                      as={motion.div}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      spacing={{ base: 2, md: 5 }}
+                    >
+                      <FormControl isInvalid={isnameInvalid} isRequired>
+                        <FormLabel>Name</FormLabel>
+
+                        <InputGroup>
+                          <InputLeftElement children={<BsPerson />} />
+                          <Input
+                            type="text"
+                            name="name"
+                            placeholder="Your Name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                          />
+                        </InputGroup>
+                        <FormErrorMessage>Name invalid</FormErrorMessage>
+                      </FormControl>
+
+                      <FormControl isInvalid={isemailInvalid} isRequired>
+                        <FormLabel>Email</FormLabel>
+
+                        <InputGroup>
+                          <InputLeftElement children={<MdOutlineEmail />} />
+                          <Input
+                            type="email"
+                            name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Your Email"
+                          />
+                        </InputGroup>
+
+                        <FormErrorMessage>Email invalid</FormErrorMessage>
+                      </FormControl>
+
+                      <FormControl isInvalid={ismessageInvalid} isRequired>
+                        <FormLabel>Message</FormLabel>
+
+                        <Textarea
+                          name="message"
+                          value={message}
+                          onChange={(e) => setMessage(e.target.value)}
+                          placeholder="Your Message"
+                          rows={6}
+                          resize="none"
+                        />
+                        <FormErrorMessage>Message invalid</FormErrorMessage>
+                      </FormControl>
+
+                      <Button
+                        onClick={handleSubmit}
+                        colorScheme="blue"
+                        py={6}
+                        width={"100%"}
+                        bg="orange"
+                        color="white"
+                        _hover={{
+                          bg: "white",
+                          color: "orange",
+                        }}
+                      >
+                        {isSending ? (
+                          <span>Sending ...</span>
+                        ) : (
+                          <span>Send Message</span>
+                        )}
+                      </Button>
+                    </VStack>
+                  ) : (
+                    <Box
+                      as={motion.div}
+                      position="absolute"
+                      top={0}
+                      left="0"
+                      right="0"
+                      bottom="0"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      <Lottie
+                        animationData={mailSent}
+                        loop={false}
+                        onComplete={() => setIsSent(false)}
+                      ></Lottie>
+                    </Box>
+                  )}
+                </AnimatePresence>
               </Box>
             </Stack>
           </VStack>
