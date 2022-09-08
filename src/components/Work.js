@@ -74,6 +74,18 @@ const Work = ({ innerRef }) => {
         },
       },
       {
+        title: "Spades game",
+        category: "game",
+        categoryIndex: 1,
+        image: "/projects/spades.png",
+        description:
+          "Online multiplayer spades game where you can play with your friends",
+        madeWith: ["javascript,nodeJS"],
+        links: {
+          website: "https://keen-gumdrop-cc7529.netlify.app",
+        },
+      },
+      {
         title: "2048",
         category: "game",
         categoryIndex: 1,
