@@ -80,7 +80,7 @@ const Work = ({ innerRef }) => {
         image: "/projects/browserquestclone.png",
         description:
           "Online multiplayer rpg game where you can fight monsters and level up",
-        madeWith: ["javascript,nodeJS"],
+        madeWith: ["javascript", "nodeJS"],
         links: {
           website: "https://browser-quest.herokuapp.com",
         },
@@ -92,7 +92,7 @@ const Work = ({ innerRef }) => {
         image: "/projects/spades.png",
         description:
           "Online multiplayer spades game where you can play with your friends",
-        madeWith: ["javascript,nodeJS"],
+        madeWith: ["javascript", "nodeJS"],
         links: {
           website: "https://keen-gumdrop-cc7529.netlify.app",
         },
