@@ -259,7 +259,7 @@ const Work = ({ innerRef }) => {
           "Alertini is a mobile application that allows you to create alerts for your favorite products and get notified when they are on sale",
         madeWith: ["react"],
         links: {
-          github: "https://github.com/HidanZZ/nextjs-portfolio/tree/Alertini",
+          github: "https://github.com/Ghassanee/Hidanz-Dev/tree/Alertini",
         },
       },
       {
@@ -271,7 +271,7 @@ const Work = ({ innerRef }) => {
           "Quick Math is a mobile application that allows you to scan a math problem and get the solution instantly",
         madeWith: ["react"],
         links: {
-          github: "https://github.com/HidanZZ/nextjs-portfolio/tree/QuickMath",
+          github: "https://github.com/Ghassanee/Hidanz-Dev/tree/QuickMath",
         },
       },
     ],
