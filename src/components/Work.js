@@ -74,6 +74,18 @@ const Work = ({ innerRef }) => {
         },
       },
       {
+        title: "Browser quest clone",
+        category: "game",
+        categoryIndex: 1,
+        image: "/projects/browserquestclone.png",
+        description:
+          "Online multiplayer rpg game where you can fight monsters and level up",
+        madeWith: ["javascript,nodeJS"],
+        links: {
+          website: "https://browser-quest.herokuapp.com",
+        },
+      },
+      {
         title: "Spades game",
         category: "game",
         categoryIndex: 1,
