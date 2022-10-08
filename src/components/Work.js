@@ -164,7 +164,7 @@ const Work = ({ innerRef }) => {
         description: "Find the unmatched color from the given colors",
         madeWith: ["javascript"],
         links: {
-          website: "https://color-game--lucky-kataifi-02f63d.netlify.app",
+          website: "https://puzzle-crush.netlify.app/",
         },
       },
       {
