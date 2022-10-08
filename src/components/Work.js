@@ -106,7 +106,7 @@ const Work = ({ innerRef }) => {
           "clone of the popular 2048 game, where you have to combine the tiles to get the 2048 tile",
         madeWith: ["javascript"],
         links: {
-          website: "https://lucky-kataifi-02f63d.netlify.app",
+          website: "https://g2048.netlify.app/",
         },
       },
       {
@@ -118,7 +118,7 @@ const Work = ({ innerRef }) => {
           "Match 3 or more balloons of the same color to pop them and get points",
         madeWith: ["javascript"],
         links: {
-          website: "https://balloon-crush--lucky-kataifi-02f63d.netlify.app",
+          website: "https://balloon-crush.netlify.app/",
         },
       },
       {
@@ -129,7 +129,7 @@ const Work = ({ innerRef }) => {
         description: "Throw the ball into the basket and get points",
         madeWith: ["javascript"],
         links: {
-          website: "https://basket-thrower--lucky-kataifi-02f63d.netlify.app",
+          website: "https://basket-thrower.netlify.app/",
         },
       },
       {
@@ -141,7 +141,7 @@ const Work = ({ innerRef }) => {
           "Hit the punching bag as many times as you can with perfect precision",
         madeWith: ["javascript"],
         links: {
-          website: "https://boxing-arcade--lucky-kataifi-02f63d.netlify.app",
+          website: "https://punch-man.netlify.app/",
         },
       },
       {
@@ -153,7 +153,7 @@ const Work = ({ innerRef }) => {
           "Clone of the popular Candy Crush game, where you have to match 3 or more candies of the same color to pop them",
         madeWith: ["javascript"],
         links: {
-          website: "https://candy-land--lucky-kataifi-02f63d.netlify.app",
+          website: "https://puzzle-crush.netlify.app/",
         },
       },
       {
@@ -164,7 +164,7 @@ const Work = ({ innerRef }) => {
         description: "Find the unmatched color from the given colors",
         madeWith: ["javascript"],
         links: {
-          website: "https://puzzle-crush.netlify.app/",
+          website: "https://try-color-game.netlify.app/",
         },
       },
       {
@@ -187,7 +187,7 @@ const Work = ({ innerRef }) => {
           "Dodge the closing platforms to survive and advance to the next level",
         madeWith: ["javascript"],
         links: {
-          website: "https://escape-room--lucky-kataifi-02f63d.netlify.app",
+          website: "https://egg-basket.netlify.app/",
         },
       },
       {
@@ -198,7 +198,7 @@ const Work = ({ innerRef }) => {
         description: "Catch the gold nuggets and avoid the black rocks",
         madeWith: ["javascript"],
         links: {
-          website: "https://goldnuggets--lucky-kataifi-02f63d.netlify.app",
+          website: "https://gold-miner.netlify.app/",
         },
       },
       {
@@ -209,7 +209,7 @@ const Work = ({ innerRef }) => {
         description: "Jump over the obstacles and get points",
         madeWith: ["javascript"],
         links: {
-          website: "https://jumping-bunny--lucky-kataifi-02f63d.netlify.app",
+          website: "https://bunny-jumper.netlify.app/",
         },
       },
       {
@@ -221,7 +221,7 @@ const Work = ({ innerRef }) => {
           "Clone of the popular Timberman game, where you have to cut the trees to get points",
         madeWith: ["javascript"],
         links: {
-          website: "https://timberjack--lucky-kataifi-02f63d.netlify.app",
+          website: "https://lamberjack.netlify.app/",
         },
       },
     ],
