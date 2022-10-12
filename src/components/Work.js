@@ -498,7 +498,7 @@ const Work = ({ innerRef }) => {
 							justifyContent='center'
 							key={selected}
 						>
-							{randomize(data[screens[selected].title]).map((item, i) => (
+							{data[screens[selected].title].map((item, i) => (
 								<chakra.span key={i} m={2}>
 									<Card
 										title={item.title}
