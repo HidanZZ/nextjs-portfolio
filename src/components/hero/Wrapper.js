@@ -21,7 +21,7 @@ export default function HeroCanvas({ tier, isMobile, size, scrollY, top }) {
       <Background
         color={top.to(
           [0, size.height * 2, size.height * 5, size.height * 10],
-          ["#191919", "#005B9F", "#191919", "#191919"]
+          ["#191919", "#232323", "#232323", "#191919"] //005B9F
         )}
       />
 

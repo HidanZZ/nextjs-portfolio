@@ -74,6 +74,30 @@ const Work = ({ innerRef }) => {
         },
       },
       {
+        title: "Dungeon delve",
+        category: "game",
+        categoryIndex: 1,
+        image: "/projects/dungeon.png",
+        description:
+          "Dungeon delve game where you can explore the dungeon and fight the monsters",
+        madeWith: ["godot"],
+        links: {
+          website: "https://venerable-lolly-28f914.netlify.app",
+        },
+      },
+      {
+        title: "Sketch game",
+        category: "game",
+        categoryIndex: 1,
+        image: "/projects/sketch.png",
+        description:
+          "Online multiplayer sketch game where you can draw and guess the word",
+        madeWith: ["nextJS", "typescript"],
+        links: {
+          website: "https://sketch-wheat.vercel.app/",
+        },
+      },
+      {
         title: "Space Words",
         category: "game",
         categoryIndex: 1,
